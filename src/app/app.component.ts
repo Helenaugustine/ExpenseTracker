@@ -10,7 +10,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { AdmincategoryComponent } from './adminside/admincategory/admincategory.component';
 import { AdminheaderComponent } from './adminside/adminheader/adminheader.component';
 import { ActiveusersComponent } from './adminside/activeusers/activeusers.component';
-import { DeletedusersComponent } from './deletedusers/deletedusers.component';
+import { DeletedusersComponent } from './adminside/deletedusers/deletedusers.component';
 
 
 @Component({

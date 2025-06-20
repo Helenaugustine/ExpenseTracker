@@ -1,0 +1,40 @@
+<div class="app-container">
+  <div class="sidebar">
+      <div class="top-section">
+    <div class="logo">
+      <i class="fas fa-wallet"></i>
+      <span>ExpenseTracker</span>
+    </div>
+    <nav class="nav-buttons">
+      <a href="home.html"><i class="fas fa-house"></i> Dashboard</a>
+      <a href="income.html"><i class="fas fa-arrow-down"></i> Active Users</a>
+      <a href="expense.html"><i class="fas fa-arrow-up"></i> Deleted Users</a>
+      <a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a>
+      <a href="category.html"><i class="fas fa-tags"></i> Category</a>
+    </nav>
+     </div>
+    <div class="logout">
+      <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header class="app-header">
+      
+  <div class="page-title" id="pageTitle" class="fas fa-house">   Dashboard</div>
+  <div class="user-info">
+    <img src="https://www.gravatar.com/avatar/?d=mp" alt="User Photo" class="user-pic" />
+    <div class="user-details">
+      <div class="user-name">John Doe</div>
+      <div class="user-email">john.doe&#64;example.com</div>
+    </div>
+  </div>
+
+    </header>
+    <div class="inner-content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
+
+

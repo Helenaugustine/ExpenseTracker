@@ -35,4 +35,25 @@ export class LayoutComponent {
     this.auth.clearUser();
     this.router.navigate(['/login']);
   }
+ 
+
+// logout() {
+//   this.auth.logout().subscribe({
+//     next: (res) => {
+//       alert(res.message || 'Logged out successfully!');
+//       localStorage.clear(); // clear tokens or user data
+//       this.router.navigate(['/login']); // or your login route
+//   //     const message = (res as any).message;
+//   // alert(message || 'Logged out successfully!');
+//   // localStorage.clear();
+//   // this.router.navigate(['/login']);
+//     },
+
+//     error: (err) => {
+//       console.error('Logout failed:', err);
+//       alert('Something went wrong while logging out.');
+//     }
+//   });
+// }
+
 }

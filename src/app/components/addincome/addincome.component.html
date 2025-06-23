@@ -1,5 +1,5 @@
 <div class="form-container">
-    <form>
+    <!-- <form>
 
       <label for="amount">Source</label>
       <input type="text" id="amount" name="amount" required />
@@ -8,5 +8,15 @@
       <input type="text" id="note" name="note" />
 
       <button type="submit">Add Income</button>
-    </form>
+    </form> -->
+
+<form (ngSubmit)="submitIncome()" #incomeForm="ngForm">
+  <label for="source">Source</label>
+  <input type="text" id="source" name="source" [(ngModel)]="income.Source" required />
+
+  <label for="amount">Amount</label>
+  <input type="number" id="amount" name="amount" [(ngModel)]="income.Amount" required />
+
+  <button type="submit" [disabled]="!incomeForm.form.valid">Add Income</button>
+</form>
   </div>

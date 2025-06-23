@@ -12,7 +12,7 @@ import { ActiveusersComponent } from './adminside/activeusers/activeusers.compon
 import { DeletedusersComponent } from './adminside/deletedusers/deletedusers.component';
 import { AddexpenseComponent } from './components/addexpense/addexpense.component';
 import { AddcategoryComponent } from './common/addcategory/addcategory.component';
-import { AddincomeComponent } from './components/addincome/addincome.component';
+import { AddIncomeComponent } from './components/addincome/addincome.component';
 import { AddsavingsComponent } from './components/addsavings/addsavings.component';
 import { ProfileComponent } from './common/profile/profile.component';
 import { HomeComponent } from './home/home.component';
@@ -37,7 +37,7 @@ import { LayoutComponent } from './layout/layout.component';
     DeletedusersComponent,
     AddexpenseComponent,
     AddcategoryComponent,
-    AddincomeComponent,
+    AddIncomeComponent,
     AddsavingsComponent,
     ProfileComponent,
     HomeComponent,

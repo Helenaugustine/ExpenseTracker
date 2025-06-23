@@ -1,7 +1,7 @@
 
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
-import { FormsModule,NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 
@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
-   standalone: true,
+  standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -21,7 +21,7 @@ export class LoginComponent {
     Password: ''
   };
 
-  constructor(private http: HttpClient, private router: Router,private authService: AuthService) {}
+  constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
 
   login() {
     this.http.post<any>(`https://localhost:7258/api/Authentictaion/login`, this.auth, {
@@ -29,12 +29,18 @@ export class LoginComponent {
     }).subscribe({
       next: (res) => {
         this.authService.setUser(res.name, res.email);
-        alert(res.message);
-       
-        if (res.role === 'Admin') {
-          this.router.navigate(['/admin-dashboard']);
-        } else {
-          this.router.navigate(['/home']);
+        console.log(res);
+        if (res.message == 'Login successfull') {
+          localStorage.setItem('userId', res.id);
+          
+          alert(res.message);
+          console.log(localStorage.getItem('userId'));
+          
+          if (res.role === 'Admin') {
+            this.router.navigate(['/admin-dashboard']);
+          } else {
+            this.router.navigate(['/home']);
+          }
         }
       },
       error: (err) => {

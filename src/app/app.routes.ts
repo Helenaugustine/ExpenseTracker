@@ -33,6 +33,7 @@ import { ExpenseComponent } from './components/expense/expense.component';
 import { SavingsComponent } from './components/savings/savings.component';
 import { CategoryComponent } from './components/category/category.component';
 import { AddexpenseComponent } from './components/addexpense/addexpense.component';
+import { AddIncomeComponent } from './components/addincome/addincome.component';
 // ... import other components
 
 export const routes: Routes = [
@@ -55,5 +56,8 @@ export const routes: Routes = [
     ]
   },
   {path: 'addexpense', component:AddexpenseComponent},
-  { path: '**', redirectTo: 'login' }
+  {path: 'addincome', component:AddIncomeComponent},
+  { path: '**', redirectTo: 'login' },
+  
+
 ];

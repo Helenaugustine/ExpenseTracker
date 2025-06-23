@@ -1,20 +1,20 @@
 
-<form class="form">
-    <p class="title">Login </p>
-    <p class="message">Enter your credentials to login. </p>
-        <div class="flex">
-        <label>
-            <input class="input" type="text" placeholder="" required="">
-            <span>Name</span>
-        </label>
 
-    </div>  
-  
-    <label>
-        <input class="input" type="password" placeholder="" required="">
-        <span>Password</span>
-    </label>
-   
-    <button class="submit">Login</button>
-    <p class="signin">Don't have an acount ? <a href="#">Signup</a> </p>
+
+<form class="form" (ngSubmit)="login()" #loginForm="ngForm">
+  <p class="title">Login</p>
+  <p class="message">Enter your credentials to login.</p>
+
+  <label>
+    <input class="input" type="text" name="name" [(ngModel)]="auth.Name" required />
+    <span>Name</span>
+  </label>
+
+  <label>
+    <input class="input" type="password" name="password" [(ngModel)]="auth.Password" required />
+    <span>Password</span>
+  </label>
+
+  <button class="submit" type="submit">Login</button>
+  <p class="signin">Don't have an account? <a href="/signup">Signup</a></p>
 </form>

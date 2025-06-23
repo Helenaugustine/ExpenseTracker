@@ -1,0 +1,41 @@
+<!-- <div class="form-container">
+    <form>
+
+        <label for="category">Category</label>
+      <select id="category" name="category">
+        <option value="food">Food</option>
+        <option value="travel">Travel</option>
+        <option value="utilities">Utilities</option>
+        <option value="others">Others</option>
+      </select>
+
+      <label for="amount">Amount</label>
+      <input type="text" id="amount" name="amount" required />
+
+      <label for="note">Note</label>
+      <input type="text" id="note" name="note" />
+
+      <button type="submit">Add Expense</button>
+    </form>
+  </div> -->
+<div class="form-container">
+  <form (ngSubmit)="submitExpense()" #expenseForm="ngForm">
+    <label for="category">Category</label>
+    <select id="category" name="category" [(ngModel)]="expense.category" required>
+      <!-- <option *ngFor="let c of categories" [value]="c.Name">{{ c.Name }} ({{ c.Type }})</option> -->
+      <option *ngFor="let cat of categories" [value]="cat.name">
+    {{ cat.name }} 
+    - {{ cat.type }}
+  </option>
+    </select>
+    
+
+    <label for="amount">Amount</label>
+    <input type="text" id="amount" name="amount" [(ngModel)]="expense.amount" required />
+
+    <label for="note">Note</label>
+    <input type="text" id="note" name="note" [(ngModel)]="expense.note" />
+
+    <button type="submit">Add Expense</button>
+  </form>
+</div>

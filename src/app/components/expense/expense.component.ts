@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-expense',
@@ -7,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './expense.component.css'
 })
 export class ExpenseComponent {
+  constructor(private router: Router) {}
+
+  goToAddExpense() {
+    this.router.navigate(['/addexpense']);
+  }
 
 }

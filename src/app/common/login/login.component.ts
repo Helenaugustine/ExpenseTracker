@@ -1,11 +1,47 @@
+
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { FormsModule,NgForm } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
+
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-login',
-  imports: [],
+   standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  auth = {
+    Name: '',
+    Password: ''
+  };
 
+  constructor(private http: HttpClient, private router: Router,private authService: AuthService) {}
+
+  login() {
+    this.http.post<any>(`https://localhost:7258/api/Authentictaion/login`, this.auth, {
+      withCredentials: true // needed for cookies
+    }).subscribe({
+      next: (res) => {
+        this.authService.setUser(res.name, res.email);
+        alert(res.message);
+       
+        if (res.role === 'Admin') {
+          this.router.navigate(['/admin-dashboard']);
+        } else {
+          this.router.navigate(['/home']);
+        }
+      },
+      error: (err) => {
+        alert('Invalid credentials');
+      }
+    });
+  }
 }
+
+

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { filter, map } from 'rxjs';
 
 @Component({
   selector: 'app-headerside',

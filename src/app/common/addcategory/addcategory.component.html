@@ -1,11 +1,11 @@
 <div class="form-container">
-    <form>
+    <form (ngSubmit)="submitcate()" #cateForm="ngForm">
 
-      <label for="amount">Name</label>
-      <input type="text" id="amount" name="amount" required />
+      <label for="name">Name</label>
+      <input type="text" id="name" name="Name" required [(ngModel)]="cate.Name" />
 
-      <label for="category">Type</label>
-      <select id="category" name="category">
+      <label for="type">Type</label>
+      <select id="type" name="Type" [(ngModel)]="cate.Type" >
         <option value="Variable">Variable</option>
         <option value="Fixed">Fixed</option>
       </select>

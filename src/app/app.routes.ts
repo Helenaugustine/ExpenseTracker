@@ -34,6 +34,9 @@ import { SavingsComponent } from './components/savings/savings.component';
 import { CategoryComponent } from './components/category/category.component';
 import { AddexpenseComponent } from './components/addexpense/addexpense.component';
 import { AddIncomeComponent } from './components/addincome/addincome.component';
+import { AddsavingsComponent } from './components/addsavings/addsavings.component';
+import { AddcategoryComponent } from './common/addcategory/addcategory.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
 // ... import other components
 
 export const routes: Routes = [
@@ -52,11 +55,15 @@ export const routes: Routes = [
       { path: 'savings', component: SavingsComponent, data: { title: 'Savings' } },
       { path: 'category', component: CategoryComponent, data: { title: 'Category' } },
       // { path: 'analytics', component: AnalyticsComponent, data: { title: 'Analytics' } },
+        {path: 'analytics', component:AnalyticsComponent , data: { title: 'Analytics' }}
       
     ]
   },
   {path: 'addexpense', component:AddexpenseComponent},
   {path: 'addincome', component:AddIncomeComponent},
+  {path: 'addsavings', component:AddsavingsComponent},
+  {path: 'addcate' , component:AddcategoryComponent},
+
   { path: '**', redirectTo: 'login' },
   
 

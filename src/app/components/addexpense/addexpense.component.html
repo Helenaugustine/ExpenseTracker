@@ -21,20 +21,26 @@
 <div class="form-container">
   <form (ngSubmit)="submitExpense()" #expenseForm="ngForm">
     <label for="category">Category</label>
-    <select id="category" name="category" [(ngModel)]="expense.category" required>
-      <!-- <option *ngFor="let c of categories" [value]="c.Name">{{ c.Name }} ({{ c.Type }})</option> -->
-      <option *ngFor="let cat of categories" [value]="cat.name">
+    <!-- <select id="category" name="category" [(ngModel)]="expense.CategoryName" required>
+      <option *ngFor="let c of categories" [value]="c.Name">{{ c.Name }} ({{ c.Type }})</option> 
+      <option *ngFor="let cat of categories" [value]="cat.id">
     {{ cat.name }} 
     - {{ cat.type }}
   </option>
-    </select>
+    </select> -->
     
+    <select [(ngModel)]="expense.categoryId" name="categoryId" required>
+      <option [ngValue]="null" disabled selected>Select a category</option>
+  <option *ngFor="let cat of categories" [ngValue]="cat.id">
+    {{ cat.name }} - {{ cat.type }}
+  </option>
+</select>
 
     <label for="amount">Amount</label>
-    <input type="text" id="amount" name="amount" [(ngModel)]="expense.amount" required />
+    <input type="text" id="amount" name="amount" [(ngModel)]="expense.Amount" required />
 
     <label for="note">Note</label>
-    <input type="text" id="note" name="note" [(ngModel)]="expense.note" />
+    <input type="text" id="note" name="note" [(ngModel)]="expense.Note" />
 
     <button type="submit">Add Expense</button>
   </form>

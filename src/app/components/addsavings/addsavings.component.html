@@ -1,16 +1,16 @@
 <div class="form-container">
-    <form>
+    <form (ngSubmit)="submitSavings()" #savingForm="ngForm">
 
 
-      <label for="note">Platform</label>
-      <input type="text" id="note" name="note" />
+      <label for="platform">Platform</label>
+      <input type="text" id="platform" name="platform" [(ngModel)]="saving.Platform" required/>
 
-      <label for="note">Type</label>
-      <input type="text" id="note" name="note" />
+      <label for="type">Type</label>
+      <input type="text" id="type" name="type" [(ngModel)]="saving.Type" required/>
 
       <label for="amount">Amount</label>
-      <input type="text" id="amount" name="amount" required />
+      <input type="text" id="amount" name="amount" required [(ngModel)]="saving.Amount" required/>
 
-      <button type="submit">Add Savings</button>
+      <button type="submit" [disabled]="!savingForm.form.valid">Add Savings</button>
     </form>
   </div>

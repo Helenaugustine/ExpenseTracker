@@ -2,7 +2,7 @@
 <div class="income-page">
   <div class="income-header">
     <h2>Category Details</h2>
-    <button class="add-btn">+  Add Category</button>
+    <button class="add-btn" (click)="goToAddCategory()">+  Add Category</button>
     
   </div>
 
@@ -31,13 +31,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Freelance</td>
-        <td>Freelance</td>
-        <td>2025-06-01</td>
+      <tr *ngFor="let cat of category">
+  <td>{{ cat.id }}</td>
+   <td>{{ cat.name }}</td>
+    <td>{{ cat.type }}</td>
+  
+  
+        
         <td>
        
-          <button class="delete-btn"><i class="fas fa-trash-alt" ></i></button>
+          <button class="delete-btn" (click)="deletecategory(cat.id)"><i class="fas fa-trash-alt" ></i></button>
         </td>
       </tr>
       <!-- Repeat rows as needed -->

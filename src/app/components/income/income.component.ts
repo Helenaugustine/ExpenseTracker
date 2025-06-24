@@ -20,12 +20,28 @@ searchText: string = '';
 
   constructor(private incomeService: IncomeService,private router: Router) {}
 
-  ngOnInit() {
-    this.incomeService.getIncomes().subscribe(data => {
-      this.incomes = data;
-      console.log(data)
-    });
-  }
+ 
+filteredIncomes: any[] = [];    // Result of filters
+
+
+ngOnInit() {
+  this.incomeService.getIncomes().subscribe(data => {
+    this.incomes = data;
+    this.filteredIncomes = data;
+    this.incomeService.cachedIncomes = data;
+  });
+}
+
+
+filterIncomeBySource() {
+  const text = this.searchText.trim().toLowerCase();
+  this.filteredIncomes = !text
+    ? this.incomes
+    : this.incomes.filter(income =>
+        income.source.toLowerCase().startsWith(text)
+      );
+}
+
 
   goToAddIncome() {
     this.router.navigate(['/addincome']);
@@ -49,43 +65,58 @@ searchText: string = '';
 }
 
 
+// filterIncomeByMonth() {
+//   if (this.selectedMonth && this.selectedYear) {
+//     // Fetch by month and year
+//     this.incomeService.getMonthlyIncome(this.selectedMonth, this.selectedYear).subscribe({
+//       next: (data) =>{ this.incomes = data;
+//         this.filteredIncomes = data;
+//       },
+//       error: (err) => {
+//         console.error('Monthly income fetch failed:', err);
+//         alert(err.error || 'No income records found for this month and year.');
+//         this.incomes = [];
+//         this.filteredIncomes = [];
+//       }
+//     });
+//   } else if (!this.selectedMonth && this.selectedYear) {
+//     // Fetch by year only
+//     this.incomeService.getYearlyIncome(this.selectedYear).subscribe({
+//       next: (data) =>{ this.incomes = data;
+//         this.filteredIncomes = data;
+//       },
+//       error: (err) => {
+//         console.error('Yearly income fetch failed:', err);
+//         alert(err.error || 'No income records found for this year.');
+//         this.incomes = [];
+//         this.filteredIncomes = [];
+//       }
+//     });
+//   }
+// }
+
+goToEditIncome(id: number) {
+  this.router.navigate(['/edit-income', id]);
+}
 filterIncomeByMonth() {
-  if (this.selectedMonth && this.selectedYear) {
-    // Fetch by month and year
-    this.incomeService.getMonthlyIncome(this.selectedMonth, this.selectedYear).subscribe({
-      next: (data) => this.incomes = data,
-      error: (err) => {
-        console.error('Monthly income fetch failed:', err);
-        alert(err.error || 'No income records found for this month and year.');
-        this.incomes = [];
-      }
-    });
-  } else if (!this.selectedMonth && this.selectedYear) {
-    // Fetch by year only
-    this.incomeService.getYearlyIncome(this.selectedYear).subscribe({
-      next: (data) => this.incomes = data,
-      error: (err) => {
-        console.error('Yearly income fetch failed:', err);
-        alert(err.error || 'No income records found for this year.');
-        this.incomes = [];
-      }
-    });
-  }
-}
+  const month = Number(this.selectedMonth);
+  const year = Number(this.selectedYear);
 
-filterIncomeBySource() {
-  const trimmed = this.searchText.trim();
-  if (trimmed) {
-    this.incomeService.getIncomeBySource(trimmed).subscribe({
-      next: (data) => this.incomes = data,
-      error: (err) => {
-        console.error('Source filter failed:', err);
-        alert(err.error || 'No income records found for that source.');
-        this.incomes = [];
-      }
-    });
+  if (!month && !year) {
+    this.filteredIncomes = this.incomes;
+    return;
   }
-}
 
+  this.filteredIncomes = this.incomes.filter(s => {
+    const date = new Date(s.createdAt);
+    const matchesMonth = !month || (date.getMonth() + 1) === month;
+    const matchesYear = !year || date.getFullYear() === year;
+
+    console.log(`Saving: ${s.platform} | Date: ${date} | Month match: ${matchesMonth} | Year match: ${matchesYear}`);
+    return matchesMonth && matchesYear;
+  });
+
+  console.log('Filtered result:', this.filteredIncomes);
+}
 
 }

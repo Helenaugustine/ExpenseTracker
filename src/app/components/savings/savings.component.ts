@@ -13,16 +13,37 @@ import { SavingsService } from '../../services/savings.service';
 export class SavingsComponent {
   searchText: string = '';
   savings: any[] = [];
+   filteredSavings: any[] = [];   // Filtered list for display
+  selectedMonth: number | null = null;
+selectedYear: number | null = null;
 
   constructor(private SavingsService: SavingsService,private router: Router) {}
   
-    ngOnInit() {
-      this.SavingsService.getSavings().subscribe(data => {
-        this.savings = data;
-        console.log(data)
-      });
-    }
-  
+    // ngOnInit() {
+    //   this.SavingsService.getSavings().subscribe(data => {
+    //     this.savings = data;
+    //     console.log(data)
+    //   });
+    // }
+ 
+
+ngOnInit() {
+  this.SavingsService.getSavings().subscribe(data => {
+    this.savings = data;
+    this.filteredSavings = data;
+    this.SavingsService.cachedSavings = data;
+    
+  });
+}
+
+filterSavings() {
+  const text = this.searchText.trim().toLowerCase();
+  this.filteredSavings = !text
+    ? this.savings
+    : this.savings.filter(s =>
+        s.platform.toLowerCase().startsWith(text)
+      );
+}
     goToAddSavings() {
       this.router.navigate(['/addsavings']);
     }
@@ -44,4 +65,29 @@ export class SavingsComponent {
     }
   }
 
+
+filterSavingsByMonth() {
+  const month = Number(this.selectedMonth);
+  const year = Number(this.selectedYear);
+
+  if (!month && !year) {
+    this.filteredSavings = this.savings;
+    return;
+  }
+
+  this.filteredSavings = this.savings.filter(s => {
+    const date = new Date(s.createdAt);
+    const matchesMonth = !month || (date.getMonth() + 1) === month;
+    const matchesYear = !year || date.getFullYear() === year;
+
+    console.log(`Saving: ${s.platform} | Date: ${date} | Month match: ${matchesMonth} | Year match: ${matchesYear}`);
+    return matchesMonth && matchesYear;
+  });
+
+  console.log('Filtered result:', this.filteredSavings);
+}
+
+goToEditSavings(id: number) {
+  this.router.navigate(['/edit-savings', id]);
+}
 }

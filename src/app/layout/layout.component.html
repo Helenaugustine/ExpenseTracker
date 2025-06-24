@@ -24,13 +24,20 @@
   <div class="main-content">
     <header class="app-header">
       <div class="page-title">{{ pageTitle }}</div>
-      <div class="user-info" *ngIf="auth.userName()">
+      <!-- <div class="user-info" *ngIf="auth.userName()">
         <img src="https://www.gravatar.com/avatar/?d=mp" alt="User Photo" class="user-pic" />
         <div class="user-details">
           <div class="user-name">{{ auth.userName() }}</div>
           <div class="user-email">{{ auth.userEmail() }}</div>
         </div>
-      </div>
+      </div> -->
+      <div class="user-info" *ngIf="auth.userName()" (click)="goToProfile()" style="cursor: pointer;">
+  <img src="https://www.gravatar.com/avatar/?d=mp" alt="User Photo" class="user-pic" />
+  <div class="user-details">
+    <div class="user-name">{{ auth.userName() }}</div>
+    <div class="user-email">{{ auth.userEmail() }}</div>
+  </div>
+</div>
     </header>
 
     <div class="inner-content">

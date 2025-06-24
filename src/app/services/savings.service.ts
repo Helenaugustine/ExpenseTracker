@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class SavingsService {
 
   private apiUrl = `https://localhost:7258/api/Savings/UserSavings`; // Update as needed
-
+public cachedSavings: any[] = [];
   constructor(private http: HttpClient) {}
 
   getSavings(): Observable<any[]> {
@@ -20,4 +20,17 @@ export class SavingsService {
     withCredentials: true
   });
 }
+
+// updateSaving(id: number, payload: any): Observable<any> {
+//     return this.http.put(`https://localhost:7258/api/Savings/${id}/EditSavings`, payload, {
+//       withCredentials: true
+//     });
+//   }
+  updateSavings(id: number, updatedSavings: any): Observable<any> {
+    return this.http.put(`https://localhost:7258/api/Savings/${id}/EditSavings`, updatedSavings, {
+      withCredentials: true,
+      responseType: 'text' as const
+    });
+  }
 }
+

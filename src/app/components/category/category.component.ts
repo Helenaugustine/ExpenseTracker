@@ -14,16 +14,33 @@ export class CategoryComponent implements OnInit {
     
   searchText: string = '';
   
+  filteredCategory: any[] = []; // filtered list for display
+
+  
   
     constructor(private CategoryService: CategoryService,private router: Router) {}
   
-    ngOnInit() {
-      this.CategoryService.getcategory().subscribe(data => {
-        this.category = data;
-        console.log(data)
-      });
-    }
-  
+    // ngOnInit() {
+    //   this.CategoryService.getcategory().subscribe(data => {
+    //     this.category = data;
+    //     console.log(data)
+    //   });
+    // }
+ngOnInit() {
+  this.CategoryService.getcategory().subscribe(data => {
+    this.category = data;
+    this.filteredCategory = data;
+  });
+}
+
+filterCategories() {
+  const text = this.searchText.trim().toLowerCase();
+  this.filteredCategory = !text
+    ? this.category
+    : this.category.filter(cat =>
+        cat.name.toLowerCase().startsWith(text)
+      );
+}
     goToAddCategory() {
       this.router.navigate(['/addcate']);
     }

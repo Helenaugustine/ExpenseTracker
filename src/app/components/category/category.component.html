@@ -12,6 +12,8 @@
 <div class="search-container">
   <i class="fas fa-search search-icon"></i>
   <input
+   [(ngModel)]="searchText"
+  (input)="filterCategories()"
     placeholder="Search..."
     class="search-input"
     name="text"
@@ -31,7 +33,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let cat of category">
+      <tr *ngFor="let cat of filteredCategory">
   <td>{{ cat.id }}</td>
    <td>{{ cat.name }}</td>
     <td>{{ cat.type }}</td>

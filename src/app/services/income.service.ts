@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class IncomeService {
   private apiUrl = `https://localhost:7258/api/Income/UserIncome`; // Update as needed
-
+public cachedIncomes: any[] = [];
   constructor(private http: HttpClient) {}
 
   getIncomes(): Observable<any[]> {
@@ -37,6 +37,21 @@ getIncomeBySource(source: string) {
     withCredentials: true
   });
 }
-
-
+// for edit
+getIncomeById(id: number): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/${id}`, { withCredentials: true });
+}
+// updateIncome(id: number, updatedIncome: any): Observable<any> {
+//     return this.http.put(`${this.apiUrl}/${id}/EditIncome`, updatedIncome, { withCredentials: true });
+//   }
+// updateIncome(id: number, payload: { amount: number; source: string }) {
+//   return this.http.put(`https://localhost:7258/api/Income/${id}/EditIncome`, payload, {
+//     withCredentials: true
+//   });
+// }
+updateIncome(id: number, payload: any): Observable<any> {
+    return this.http.put(`https://localhost:7258/api/Income/${id}/EditIncome`, payload, {
+      withCredentials: true
+    });
+  }
 }

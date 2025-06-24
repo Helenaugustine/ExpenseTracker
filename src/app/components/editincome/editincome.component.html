@@ -1,0 +1,13 @@
+<div class="form-container" *ngIf="incomeForm">
+  <h2>Edit Income</h2>
+  <form [formGroup]="incomeForm" (ngSubmit)="submit()">
+    <label>Amount</label>
+    <input type="number" formControlName="amount" />
+
+    <label>Source</label>
+    <input type="text" formControlName="source" />
+
+    <button type="submit">Update</button>
+  </form>
+  <div *ngIf="message" class="message">{{ message }}</div>
+</div>

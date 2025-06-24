@@ -1,0 +1,13 @@
+<div class="edit-user-container">
+  <h2>Edit User Role</h2>
+  <form [formGroup]="roleForm" (ngSubmit)="submit()">
+    <label for="role">Role</label>
+    <select id="role" formControlName="role">
+      <option value="User">User</option>
+      <option value="Admin">Admin</option>
+    </select>
+
+    <button type="submit">Update Role</button>
+    <div class="message" *ngIf="message">{{ message }}</div>
+  </form>
+</div>

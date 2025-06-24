@@ -1,0 +1,17 @@
+
+<div class="form-container" *ngIf="SavingsForm">
+  <h2>Edit Savings</h2>
+  <form [formGroup]="SavingsForm" (ngSubmit)="submit()">
+    <label>Platform</label>
+    <input type="text" formControlName="platform" />
+
+    <label>Type</label>
+    <input type="text" formControlName="type" />
+
+    <label>Amount</label>
+    <input type="number" formControlName="amount" />
+
+    <button type="submit">Update</button>
+  </form>
+  <div *ngIf="message" class="message">{{ message }}</div>
+</div>

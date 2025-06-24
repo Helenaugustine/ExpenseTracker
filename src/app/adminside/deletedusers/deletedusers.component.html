@@ -12,6 +12,8 @@
 <div class="search-container">
   <i class="fas fa-search search-icon"></i>
   <input
+  [(ngModel)]="searchText"
+  (input)="filterDeletedUsers()"
     placeholder="Search..."
     class="search-input"
     name="text"
@@ -33,15 +35,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>bank</td>
-        <td>fixed</td>
-        <td>₹10,000</td>
-        <td>2025-06-01</td>
-        <td>2025-06-01</td>
-        <td>
-          
-        </td>
+       <tr *ngFor="let user of filteredUsers">
+  <td>{{ user.id }}</td>
+   <td>{{ user.name }}</td>
+    <td>{{ user.email }}</td>
+     <td>{{ user.role }}</td>
+     <td>{{ user.modifiedAt | date:'yyyy-MM-dd'}}</td>
+        
       </tr>
       <!-- Repeat rows as needed -->
     </tbody>

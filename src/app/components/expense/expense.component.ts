@@ -16,20 +16,35 @@ export class ExpenseComponent implements OnInit {
   selectedMonth: number | null = null;
 selectedYear: number | null = null;
 searchText: string = '';
-
+filteredExpenses: any[] = [];
 
    constructor(private ExpenseService: ExpenseService,private router: Router) {}
 
  goToAddExpense() {
     this.router.navigate(['/addexpense']);
   }
-  ngOnInit() {
-    this.ExpenseService.getExpense().subscribe(data => {
-      this.expenses = data;
-      console.log(data)
-    });
-  }
+  // ngOnInit() {
+  //   this.ExpenseService.getExpense().subscribe(data => {
+  //     this.expenses = data;
+  //     console.log(data)
+  //   });
+  // }
+ngOnInit() {
+  this.ExpenseService.getExpense().subscribe(data => {
+    this.expenses = data;
+    this.filteredExpenses = data;
+    this.ExpenseService.cachedExpenses = data; 
+  });
+}
 
+filterExpenses() {
+  const text = this.searchText.trim().toLowerCase();
+  this.filteredExpenses = !text
+    ? this.expenses
+    : this.expenses.filter(e =>
+        e.categoryName.toLowerCase().startsWith(text)
+      );
+}
  
 
   deleteExpense(expenseId: number) {
@@ -49,5 +64,30 @@ searchText: string = '';
   }
 }
 
+filterExpenseByMonth() {
+  const month = Number(this.selectedMonth);
+  const year = Number(this.selectedYear);
 
+  if (!month && !year) {
+    this.filteredExpenses = this.expenses;
+    return;
+  }
+
+  this.filteredExpenses = this.expenses.filter(s => {
+    const date = new Date(s.createdAt);
+    const matchesMonth = !month || (date.getMonth() + 1) === month;
+    const matchesYear = !year || date.getFullYear() === year;
+
+    console.log(`Saving: ${s.platform} | Date: ${date} | Month match: ${matchesMonth} | Year match: ${matchesYear}`);
+    return matchesMonth && matchesYear;
+  });
+
+  console.log('Filtered result:', this.filteredExpenses);
 }
+
+goToEditExpense(id: number) {
+  this.router.navigate(['/edit-expense', id]);
+}
+}
+
+

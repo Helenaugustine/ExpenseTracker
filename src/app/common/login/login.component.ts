@@ -25,7 +25,7 @@ export class LoginComponent {
 
   login() {
     this.http.post<any>(`https://localhost:7258/api/Authentictaion/login`, this.auth, {
-      withCredentials: true // needed for cookies
+      withCredentials: false // needed for cookies
     }).subscribe({
       next: (res) => {
         this.authService.setUser(res.name, res.email);
@@ -37,7 +37,7 @@ export class LoginComponent {
           console.log(localStorage.getItem('userId'));
           
           if (res.role === 'Admin') {
-            this.router.navigate(['/admin-dashboard']);
+            this.router.navigate(['/activeusers']);
           } else {
             this.router.navigate(['/home']);
           }

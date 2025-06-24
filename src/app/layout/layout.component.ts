@@ -36,6 +36,9 @@ export class LayoutComponent {
     this.router.navigate(['/login']);
   }
  
+goToProfile() {
+  this.router.navigate(['/profile']);
+}
 
 // logout() {
 //   this.auth.logout().subscribe({

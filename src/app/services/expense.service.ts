@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class ExpenseService {
 
   private apiUrl = `https://localhost:7258/api/Expense/ViewExpenses`; // Update as needed
+  public cachedExpenses: any[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -20,4 +21,10 @@ export class ExpenseService {
     withCredentials: true
   });
 }
+updateExpense(id: number, updatedExpense: any): Observable<any> {
+    return this.http.put(`https://localhost:7258/api/Expense/${id}/EditExpense`, updatedExpense, {
+      withCredentials: true,
+      responseType: 'text' as const
+    });
+  }
 }

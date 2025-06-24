@@ -1,58 +1,77 @@
-/* From Uiverse.io by micaelgomestavares */ 
+/* 🔷 Page background */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #e0f0ff, #cce0ff);
+}
+
+/* 🔹 Signup form box */
 .form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-width: 350px;
-  background-color: #fff;
-  padding: 20px;
+  gap: 16px;
+  max-width: 500px;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 30px 25px;
   border-radius: 20px;
+  border: 1px solid #004aad;
+  box-shadow: 0 10px 25px rgba(102, 102, 255, 0.2); /* #6666ff shadow */
   position: relative;
-  border: 1px solid #1B003F;
   margin: auto;
+  margin-top: 120px;
 }
 
+/* 🔹 Form title */
 .title {
   font-size: 28px;
-  /* color: rgb(215, 138, 225); */
-  color: #6666ff;
+  color: #004aad;
   font-weight: 600;
   letter-spacing: -1px;
-  position: relative;
   display: flex;
   align-items: center;
   padding-left: 30px;
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
+  position: relative;
 }
 
-.title::before,.title::after {
+.title::before,
+.title::after {
   position: absolute;
   content: "";
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  left: 0px;
-  background-color: #6666ff;
-}
-
-.title::before {
   width: 18px;
   height: 18px;
-  background-color: #6666ff;
+  border-radius: 50%;
+  left: 0;
+  background-color: #004aad;
 }
 
 .title::after {
-  width: 18px;
-  height: 18px;
   animation: pulse 1s linear infinite;
 }
 
-.message, .signin {
+/* 🔹 Pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* 🔹 Description & link */
+.message,
+.signin {
   color: rgba(88, 87, 87, 0.822);
   font-size: 16px;
-}
-.message{
-    margin-top: 0;
+  margin: 0;
 }
 
 .signin {
@@ -60,13 +79,16 @@
 }
 
 .signin a {
-  color: royalblue;
+  color: #0056d2;
+  font-weight: 500;
+  text-decoration: none;
 }
 
 .signin a:hover {
-  text-decoration: underline royalblue;
+  text-decoration: underline;
 }
 
+/* 🔹 Field groups */
 .flex {
   display: flex;
   width: 100%;
@@ -75,71 +97,62 @@
 
 .form label {
   position: relative;
+  width: 100%;
 }
 
-.form label .input {
+.input {
   width: 100%;
-  padding: 10px 10px 20px 10px;
-  outline: 0;
+  padding: 12px 10px;
   border: 1px solid rgba(105, 105, 105, 0.397);
   border-radius: 10px;
-}
-
-.form label .input + span {
-  position: absolute;
-  left: 10px;
-  top: 15px;
-  color: grey;
-  font-size: 0.9em;
-  cursor: text;
+  font-size: 15px;
+  outline: none;
   transition: 0.3s ease;
 }
 
-.form label .input:placeholder-shown + span {
+.input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(102, 102, 255, 0.2);
+}
+
+.input + span {
+  position: absolute;
+  left: 12px;
   top: 15px;
+  color: grey;
   font-size: 0.9em;
+  transition: 0.3s ease;
+  pointer-events: none;
 }
 
-.form label .input:focus + span,.form label .input:valid + span {
-  top: 0px;
-  font-size: 0.7em;
+.input:focus + span,
+.input:valid + span {
+  top: -8px;
+  font-size: 0.75em;
   font-weight: 600;
+  color: #004aad;
+  background-color: white;
+  padding: 0 4px;
 }
 
-.form label .input:valid + span {
+.input:valid + span {
   color: green;
 }
 
+/* 🔹 Submit button */
 .submit {
   border: none;
-  outline: none;
-  background-color: #6666ff;
-  padding: 10px;
+  background-color: #004aad;
+  padding: 12px;
   border-radius: 10px;
   color: #fff;
   font-size: 16px;
-  transform: .3s ease;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .submit:hover {
-  background-color: royalblue;
+  background-color: 003080;
   cursor: pointer;
-}
-.form label {
-  position: relative;
-  width: 93%; /* Ensure all labels take full width */
-}
-
-
-
-@keyframes pulse {
-  from {
-    transform: scale(0.9);
-    opacity: 1;
-  }
-
-  to {
-    transform: scale(1.8);
-    opacity: 0;
-  }
+  transform: translateY(-2px);
 }

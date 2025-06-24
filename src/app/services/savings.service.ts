@@ -2,6 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export interface ShowSavings {
+  id: number;
+  amount: number;
+  platform: string;
+  type: string;
+  createdAt: Date;
+}
+
 @Injectable({
   providedIn: 'root'
 })

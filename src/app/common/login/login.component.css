@@ -1,44 +1,54 @@
-/* From Uiverse.io by micaelgomestavares */ 
+
+body {
+  background: linear-gradient(to right, #e0f0ff, #cce0ff);
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Form box styling */
 .form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-width: 350px;
-  background-color: #fff;
-  padding: 20px;
+  gap: 16px;
+  max-width: 500px;
+  background-color: #ffffff;
+  padding: 30px 25px;
   border-radius: 20px;
   position: relative;
-  border: 1px solid #1B003F;
+  border: 1px solid #004aad;
+  box-shadow: 0 10px 25px rgba(0, 85, 255, 0.1);
   margin: auto;
+  margin-top: 120px;
 }
 
+/* Login title with pulse */
 .title {
   font-size: 28px;
-  /* color: rgb(215, 138, 225); */
-  color: #6666ff;
+  color: #004aad;
   font-weight: 600;
-  letter-spacing: -1px;
-  position: relative;
   display: flex;
   align-items: center;
   padding-left: 30px;
-  margin-bottom: 5px;
+  margin-bottom: 0;
+  position: relative;
 }
 
-.title::before,.title::after {
-  position: absolute;
+.title::before,
+.title::after {
   content: "";
-  height: 16px;
-  width: 16px;
+  position: absolute;
+  left: 0;
   border-radius: 50%;
-  left: 0px;
-  background-color: #6666ff;
+  background-color: #004aad;
 }
 
 .title::before {
   width: 18px;
   height: 18px;
-  background-color: #6666ff;
 }
 
 .title::after {
@@ -47,97 +57,99 @@
   animation: pulse 1s linear infinite;
 }
 
-.message, .signin {
-  color: rgba(88, 87, 87, 0.822);
-  font-size: 16px;
+/* Sub-message */
+.message,
+.signin {
+  color: #333;
+  font-size: 15px;
+  margin: 0;
 }
-.message{
-    margin-top: 0;
-}
+
 .signin {
   text-align: center;
 }
 
 .signin a {
-  color: royalblue;
+  color: #0056d2;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .signin a:hover {
-  text-decoration: underline royalblue;
+  text-decoration: underline;
 }
 
-.flex {
-  display: flex;
-  width: 100%;
-  gap: 6px;
-}
-
+/* Label block */
 .form label {
+  width: 100%;
   position: relative;
 }
 
-.form label .input {
+.input {
   width: 100%;
-  padding: 10px 10px 20px 10px;
-  outline: 0;
-  border: 1px solid rgba(105, 105, 105, 0.397);
+  padding: 12px 10px 12px;
+  border: 1px solid #cccccc;
   border-radius: 10px;
-}
-
-.form label .input + span {
-  position: absolute;
-  left: 10px;
-  top: 15px;
-  color: grey;
-  font-size: 0.9em;
-  cursor: text;
+  outline: none;
+  font-size: 15px;
   transition: 0.3s ease;
 }
 
-.form label .input:placeholder-shown + span {
-  top: 15px;
-  font-size: 0.9em;
+.input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
 }
 
-.form label .input:focus + span,.form label .input:valid + span {
-  top: 0px;
-  font-size: 0.7em;
+/* Floating label */
+.input + span {
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  color: #888;
+  font-size: 0.95em;
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+.input:focus + span,
+.input:valid + span {
+  top: -8px;
+  font-size: 0.75em;
+  background: white;
+  padding: 0 4px;
+  color: #004aad;
   font-weight: 600;
 }
 
-.form label .input:valid + span {
-  color: green;
+.input:valid + span {
+  color: #28a745;
 }
 
+/* Submit button */
 .submit {
   border: none;
-  outline: none;
-  background-color: #6666ff;
-  padding: 10px;
+  background-color: #004aad;
+  padding: 12px;
   border-radius: 10px;
   color: #fff;
   font-size: 16px;
-  transform: .3s ease;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .submit:hover {
-  background-color: royalblue;
+  background-color: #003080;
   cursor: pointer;
-}
-.form label {
-  position: relative;
-  width: 93%; /* Ensure all labels take full width */
+  transform: translateY(-2px);
 }
 
-
-
+/* Pulse effect */
 @keyframes pulse {
-  from {
+  0% {
     transform: scale(0.9);
     opacity: 1;
   }
-
-  to {
+  100% {
     transform: scale(1.8);
     opacity: 0;
   }

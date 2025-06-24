@@ -6,6 +6,7 @@
 h2 {
   font-size: 25px;
   font-weight: bold;
+  color: rgb(1, 1, 49);
 }
 
 .income-header {
@@ -16,14 +17,17 @@ h2 {
 
 .add-btn {
   padding: 12px 28px;
-  background-color: #7b5aa5;
+ background: linear-gradient(135deg, #1e2a78, #b36fff);
   color: white;
   border: none;
   border-radius: 999px;
   cursor: pointer;
   font: 16px 'Poppins', sans-serif;
 }
-
+.add-btn:hover {
+  background: linear-gradient(135deg, #1c2670, #3e68e0);
+  transform: translateY(-2px);
+}
 .filters {
   display: flex;
   gap: 20px;
@@ -89,7 +93,7 @@ h2 {
 }
 
 .income-table thead tr {
-  background-color: #c7b6dc;
+  background-color: #1e2a78;
 }
 
 .income-table thead th {
@@ -120,7 +124,7 @@ h2 {
   width: 80px;
   height: 40px;
   padding: 8px 16px;
-  background-color: #baaceb;
+  background-color: #1e2a78;
   color: white;
   font: 500 14px Arial, sans-serif;
   cursor: pointer;
@@ -155,7 +159,7 @@ h2 {
 .delete-btn {
   padding: 6px 10px;
   background-color: transparent;
-  color: #801f85;
+  color: #1e2a78;
   border: none;
   border-radius: 3px;
   cursor: pointer;

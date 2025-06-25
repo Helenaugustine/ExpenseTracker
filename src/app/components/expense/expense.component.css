@@ -17,17 +17,19 @@ h2 {
 
 .add-btn {
   padding: 12px 28px;
- background: linear-gradient(135deg, #1e2a78, #b36fff);
+  background: linear-gradient(135deg, #1e2a78, #b36fff);
   color: white;
   border: none;
   border-radius: 999px;
   cursor: pointer;
   font: 16px 'Poppins', sans-serif;
 }
+
 .add-btn:hover {
   background: linear-gradient(135deg, #1c2670, #3e68e0);
   transform: translateY(-2px);
 }
+
 .filters {
   display: flex;
   gap: 20px;

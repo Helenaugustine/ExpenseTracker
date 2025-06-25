@@ -21,7 +21,7 @@ export class EditsavingsComponent implements OnInit {
     private route: ActivatedRoute,
     private savingsService: SavingsService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.savingsId = Number(this.route.snapshot.paramMap.get('id'));

@@ -7,116 +7,104 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-income',
-  imports:[FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './income.component.html',
   styleUrls: ['./income.component.css']
 })
 export class IncomeComponent implements OnInit {
   incomes: any[] = [];
   selectedMonth: number | null = null;
-selectedYear: number | null = null;
-searchText: string = '';
+  selectedYear: number | null = null;
+  searchText: string = '';
 
 
-  constructor(private incomeService: IncomeService,private router: Router) {}
-
- 
-filteredIncomes: any[] = [];    // Result of filters
+  constructor(private incomeService: IncomeService, private router: Router) { }
 
 
-ngOnInit() {
-  this.incomeService.getIncomes().subscribe(data => {
-    this.incomes = data;
-    this.filteredIncomes = data;
-    this.incomeService.cachedIncomes = data;
-  });
-}
+  filteredIncomes: any[] = [];    // Result of filters
 
 
-filterIncomeBySource() {
-  const text = this.searchText.trim().toLowerCase();
-  this.filteredIncomes = !text
-    ? this.incomes
-    : this.incomes.filter(income =>
+  ngOnInit() {
+    this.incomeService.getIncomes().subscribe(data => {
+      this.incomes = data;
+      this.filteredIncomes = data;
+      this.incomeService.cachedIncomes = data;
+    });
+  }
+
+
+  filterIncomeBySource() {
+    const text = this.searchText.trim().toLowerCase();
+    this.filteredIncomes = !text
+      ? this.incomes
+      : this.incomes.filter(income =>
         income.source.toLowerCase().startsWith(text)
       );
-}
+  }
 
 
   goToAddIncome() {
     this.router.navigate(['/addincome']);
   }
 
+  // deleteIncome(incomeId: number) {
+  //   console.log('Deleting income with ID:', incomeId);
+  //   if (confirm('Are you sure you want to delete this income?')) {
+  //     this.incomeService.deleteIncome(incomeId).subscribe({
+  //       next: () => {
+  //         alert('Income deleted successfully!');
+  //         this.incomes = this.incomes.filter(i => i.id !== incomeId); // update UI
+  //       },
+  //       error: err => {
+  //         console.error('Error deleting income:', err);
+  //         alert('Failed to delete income.');
+  //       }
+
+  //     });
+  //   }
+  // }
   deleteIncome(incomeId: number) {
-    console.log('Deleting income with ID:', incomeId);
+  console.log('Deleting income with ID:', incomeId);
   if (confirm('Are you sure you want to delete this income?')) {
     this.incomeService.deleteIncome(incomeId).subscribe({
       next: () => {
         alert('Income deleted successfully!');
-        this.incomes = this.incomes.filter(i => i.id !== incomeId); // update UI
+        this.incomes = this.incomes.filter(i => i.id !== incomeId);
+        this.filteredIncomes = this.filteredIncomes.filter(i => i.id !== incomeId); 
       },
       error: err => {
         console.error('Error deleting income:', err);
         alert('Failed to delete income.');
       }
-
     });
   }
 }
 
 
-// filterIncomeByMonth() {
-//   if (this.selectedMonth && this.selectedYear) {
-//     // Fetch by month and year
-//     this.incomeService.getMonthlyIncome(this.selectedMonth, this.selectedYear).subscribe({
-//       next: (data) =>{ this.incomes = data;
-//         this.filteredIncomes = data;
-//       },
-//       error: (err) => {
-//         console.error('Monthly income fetch failed:', err);
-//         alert(err.error || 'No income records found for this month and year.');
-//         this.incomes = [];
-//         this.filteredIncomes = [];
-//       }
-//     });
-//   } else if (!this.selectedMonth && this.selectedYear) {
-//     // Fetch by year only
-//     this.incomeService.getYearlyIncome(this.selectedYear).subscribe({
-//       next: (data) =>{ this.incomes = data;
-//         this.filteredIncomes = data;
-//       },
-//       error: (err) => {
-//         console.error('Yearly income fetch failed:', err);
-//         alert(err.error || 'No income records found for this year.');
-//         this.incomes = [];
-//         this.filteredIncomes = [];
-//       }
-//     });
-//   }
-// }
 
-goToEditIncome(id: number) {
-  this.router.navigate(['/edit-income', id]);
-}
-filterIncomeByMonth() {
-  const month = Number(this.selectedMonth);
-  const year = Number(this.selectedYear);
 
-  if (!month && !year) {
-    this.filteredIncomes = this.incomes;
-    return;
+  goToEditIncome(id: number) {
+    this.router.navigate(['/edit-income', id]);
   }
+  filterIncomeByMonth() {
+    const month = Number(this.selectedMonth);
+    const year = Number(this.selectedYear);
 
-  this.filteredIncomes = this.incomes.filter(s => {
-    const date = new Date(s.createdAt);
-    const matchesMonth = !month || (date.getMonth() + 1) === month;
-    const matchesYear = !year || date.getFullYear() === year;
+    if (!month && !year) {
+      this.filteredIncomes = this.incomes;
+      return;
+    }
 
-    console.log(`Saving: ${s.platform} | Date: ${date} | Month match: ${matchesMonth} | Year match: ${matchesYear}`);
-    return matchesMonth && matchesYear;
-  });
+    this.filteredIncomes = this.incomes.filter(s => {
+      const date = new Date(s.createdAt);
+      const matchesMonth = !month || (date.getMonth() + 1) === month;
+      const matchesYear = !year || date.getFullYear() === year;
 
-  console.log('Filtered result:', this.filteredIncomes);
-}
+      console.log(`Saving: ${s.platform} | Date: ${date} | Month match: ${matchesMonth} | Year match: ${matchesYear}`);
+      return matchesMonth && matchesYear;
+    });
+
+    console.log('Filtered result:', this.filteredIncomes);
+  }
 
 }

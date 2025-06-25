@@ -8,13 +8,13 @@ import { filter, map } from 'rxjs';
 @Component({
   selector: 'app-adminheader',
   standalone: true,
- imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './adminheader.component.html',
   styleUrl: './adminheader.component.css'
 })
 export class AdminheaderComponent {
   pageTitle = 'ActiveUsers';
- constructor(
+  constructor(
     public auth: AuthService,
     public router: Router,
     private route: ActivatedRoute
@@ -35,6 +35,6 @@ export class AdminheaderComponent {
     this.auth.clearUser();
     this.router.navigate(['/login']);
   }
- 
+
 
 }

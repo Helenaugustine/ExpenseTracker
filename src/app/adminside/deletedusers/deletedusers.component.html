@@ -1,26 +1,19 @@
-
 <div class="income-page">
   <div class="income-header">
     <h2>User Details</h2>
     <!-- <button class="add-btn">+  Add Savings</button> -->
-    
+
   </div>
 
   <div class="filters">
 
-   
-<div class="search-container">
-  <i class="fas fa-search search-icon"></i>
-  <input
-  [(ngModel)]="searchText"
-  (input)="filterDeletedUsers()"
-    placeholder="Search..."
-    class="search-input"
-    name="text"
-    type="text"
-  />
-</div>
-    
+
+    <div class="search-container">
+      <i class="fas fa-search search-icon"></i>
+      <input [(ngModel)]="searchText" (input)="filterDeletedUsers()" placeholder="Search..." class="search-input"
+        name="text" type="text" />
+    </div>
+
   </div>
 
   <table class="income-table">
@@ -31,22 +24,21 @@
         <th>EMAIL</th>
         <th>ROLE</th>
         <th>DELETED ON</th>
-       
+
       </tr>
     </thead>
     <tbody>
-       <tr *ngFor="let user of filteredUsers">
-  <td>{{ user.id }}</td>
-   <td>{{ user.name }}</td>
-    <td>{{ user.email }}</td>
-     <td>{{ user.role }}</td>
-     <td>{{ user.modifiedAt | date:'yyyy-MM-dd'}}</td>
-        
+      <tr *ngFor="let user of filteredUsers">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>{{ user.modifiedAt | date:'yyyy-MM-dd'}}</td>
+
       </tr>
       <!-- Repeat rows as needed -->
     </tbody>
   </table>
- 
+
 
 </div>
-

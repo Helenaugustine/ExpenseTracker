@@ -1,32 +1,25 @@
-
 <div class="income-page">
   <div class="income-header">
     <h2>Income Details</h2>
-    <button class="add-btn" (click)="goToAddIncome()">+  Add Income</button>
-    
+    <button class="add-btn" (click)="goToAddIncome()">+ Add Income</button>
+
   </div>
 
   <div class="filters">
 
-   
-<div class="search-container">
-  <i class="fas fa-search search-icon"></i>
-  <!-- <input
+
+    <div class="search-container">
+      <i class="fas fa-search search-icon"></i>
+      <!-- <input
     placeholder="Search..."
     class="search-input"
     name="text"
     type="text"
   /> -->
-  <input
-  [(ngModel)]="searchText"
-  (input)="filterIncomeBySource()"
-  placeholder="Search ..."
-  class="search-input"
-  name="text"
-  type="text"
-/>
-</div>
-<!-- [(ngModel)]="searchText"
+      <input [(ngModel)]="searchText" (input)="filterIncomeBySource()" placeholder="Search ..." class="search-input"
+        name="text" type="text" />
+    </div>
+    <!-- [(ngModel)]="searchText"
   (keyup.enter)="filterIncomeBySource()" -->
 
     <!-- <select class="month-select">
@@ -38,27 +31,27 @@
     </select> -->
 
     <select class="month-select" [(ngModel)]="selectedMonth" (change)="filterIncomeByMonth()">
-  <option [ngValue]="null" disabled selected>Month</option>
-  <option [value]="1">January</option>
-<option [value]="2">February</option>
-<option [value]="3">March</option>
-<option [value]="4">April</option>
-<option [value]="5">May</option>
-<option [value]="6">June</option>
-<option [value]="7">July</option>
-<option [value]="8">August</option>
-<option [value]="9">September</option>
-<option [value]="10">October</option>
-<option [value]="11">November</option>
-<option [value]="12">December</option>
-  <!-- Add the rest -->
-</select>
+      <option [ngValue]="null" disabled selected>Month</option>
+      <option [value]="1">January</option>
+      <option [value]="2">February</option>
+      <option [value]="3">March</option>
+      <option [value]="4">April</option>
+      <option [value]="5">May</option>
+      <option [value]="6">June</option>
+      <option [value]="7">July</option>
+      <option [value]="8">August</option>
+      <option [value]="9">September</option>
+      <option [value]="10">October</option>
+      <option [value]="11">November</option>
+      <option [value]="12">December</option>
+      <!-- Add the rest -->
+    </select>
     <select class="year-select" [(ngModel)]="selectedYear" (change)="filterIncomeByMonth()">
-  <option [ngValue]="null"  disabled selected>Year</option>
-  <option [value]="2024">2024</option>
-  <option [value]="2025">2025</option>
-  <!-- Add more -->
-</select>
+      <option [ngValue]="null" disabled selected>Year</option>
+      <option [value]="2024">2024</option>
+      <option [value]="2025">2025</option>
+      <!-- Add more -->
+    </select>
   </div>
 
   <table class="income-table">
@@ -71,27 +64,30 @@
       </tr>
     </thead>
     <tbody>
-      
-        <tr *ngFor="let income of filteredIncomes">
-  <td>{{ income.source }}</td>
-  <td>{{ income.amount | currency:'INR' }}</td>
-  <td>{{ income.createdAt | date:'yyyy-MM-dd'}}</td>
-  
+
+      <tr *ngFor="let income of filteredIncomes">
+        <td>{{ income.source }}</td>
+        <td>{{ income.amount | currency:'INR' }}</td>
+        <td>{{ income.createdAt | date:'yyyy-MM-dd'}}</td>
+
         <td>
           <!-- <button class="edit-btn">Edit</button> -->
-           <button class="Btn" (click)="goToEditIncome(income.id)">Edit 
-      <svg class="svg" viewBox="0 0 512 512">
-        <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path></svg>
-    </button>
-          
+          <button class="Btn" (click)="goToEditIncome(income.id)">Edit
+            <svg class="svg" viewBox="0 0 512 512">
+              <path
+                d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z">
+              </path>
+            </svg>
+          </button>
+
           <button class="delete-btn" (click)="deleteIncome(income.id)">
-  <i class="fas fa-trash-alt"></i>
-</button>
+            <i class="fas fa-trash-alt"></i>
+          </button>
         </td>
       </tr>
       <!-- Repeat rows as needed -->
     </tbody>
   </table>
- 
+
 
 </div>

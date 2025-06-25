@@ -19,7 +19,8 @@ label {
   font-weight: bold;
 }
 
-select, button {
+select,
+button {
   width: 100%;
   padding: 10px;
   margin-bottom: 16px;

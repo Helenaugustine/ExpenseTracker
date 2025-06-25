@@ -1,19 +1,19 @@
 <div class="app-container">
   <div class="sidebar">
-      <div class="top-section">
-    <div class="logo">
-      <i class="fas fa-wallet"></i>
-      <span>ExpenseTracker</span>
+    <div class="top-section">
+      <div class="logo">
+        <i class="fas fa-wallet"></i>
+        <span>ExpenseTracker</span>
+      </div>
+      <nav class="nav-buttons">
+        <a routerLink="/home"><i class="fas fa-house"></i> Home</a>
+        <a href="/income"><i class="fas fa-arrow-down"></i> Income</a>
+        <a href="/expense"><i class="fas fa-arrow-up"></i> Expense</a>
+        <a href="/savings"><i class="fas fa-piggy-bank"></i> Savings</a>
+        <a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a>
+        <a href="/category"><i class="fas fa-tags"></i> Category</a>
+      </nav>
     </div>
-    <nav class="nav-buttons">
-      <a routerLink="/home"><i class="fas fa-house"></i> Home</a>
-      <a href="/income"><i class="fas fa-arrow-down"></i> Income</a>
-      <a href="/expense"><i class="fas fa-arrow-up"></i> Expense</a>
-      <a href="/savings"><i class="fas fa-piggy-bank"></i> Savings</a>
-      <a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a>
-      <a href="/category"><i class="fas fa-tags"></i> Category</a>
-    </nav>
-     </div>
     <div class="logout">
       <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
@@ -21,16 +21,16 @@
 
   <div class="main-content">
     <header class="app-header">
-      
-  <div class="page-title" id="pageTitle" class="fas fa-house">   Home</div>
-  <div class="user-info">
-    <img src="https://www.gravatar.com/avatar/?d=mp" alt="User Photo" class="user-pic" />
-    <div class="user-details">
-      
-      <div class="user-name">{{ auth.userName() }}</div>
-    <div class="user-email">{{ auth.userEmail() }}</div>
-    </div>
-  </div>
+
+      <div class="page-title" id="pageTitle" class="fas fa-house"> Home</div>
+      <div class="user-info">
+        <img src="https://www.gravatar.com/avatar/?d=mp" alt="User Photo" class="user-pic" />
+        <div class="user-details">
+
+          <div class="user-name">{{ auth.userName() }}</div>
+          <div class="user-email">{{ auth.userEmail() }}</div>
+        </div>
+      </div>
 
     </header>
     <div class="inner-content">
@@ -39,45 +39,3 @@
   </div>
 </div>
 
-<!-- <div class="app-container">
-  <div class="sidebar">
-    <div class="top-section">
-      <div class="logo">
-        <i class="fas fa-wallet"></i>
-        <span>ExpenseTracker</span>
-      </div>
-      <nav class="nav-buttons">
-        <a routerLink="/home"><i class="fas fa-house"></i> Home</a>
-        <a routerLink="/income"><i class="fas fa-arrow-down"></i> Income</a>
-        <a routerLink="/expense"><i class="fas fa-arrow-up"></i> Expense</a>
-        <a routerLink="/savings"><i class="fas fa-piggy-bank"></i> Savings</a>
-        <a routerLink="/analytics"><i class="fas fa-chart-line"></i> Analytics</a>
-        <a routerLink="/category"><i class="fas fa-tags"></i> Category</a>
-      </nav>
-    </div>
-    <div class="logout">
-      <a (click)="auth.clearUser(); router.navigate(['/login'])">
-        <i class="fas fa-sign-out-alt"></i> Logout
-      </a>
-    </div>
-  </div>
-
-  <div class="main-content">
-    <header class="app-header">
-      <div class="page-title">
-        {{ pageTitle }}
-      </div>
-      <div class="user-info" *ngIf="auth.userName()">
-        <img src="https://www.gravatar.com/avatar/?d=mp" alt="User Photo" class="user-pic" />
-        <div class="user-details">
-          <div class="user-name">{{ auth.userName() }}</div>
-          <div class="user-email">{{ auth.userEmail() }}</div>
-        </div>
-      </div>
-    </header>
-
-    <div class="inner-content">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</div> -->

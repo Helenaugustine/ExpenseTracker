@@ -10,7 +10,6 @@
         <a routerLink="/income"><i class="fas fa-arrow-down"></i><span> Income</span></a>
         <a routerLink="/expense"><i class="fas fa-arrow-up"></i> <span>Expense</span></a>
         <a routerLink="/savings"><i class="fas fa-piggy-bank"></i><span> Savings</span></a>
-        <!-- <a routerLink="/analytics"><i class="fas fa-chart-line"></i><span> Analytics</span></a> -->
         <a routerLink="/category"><i class="fas fa-tags"></i><span> Category</span></a>
       </nav>
     </div>
@@ -24,20 +23,14 @@
   <div class="main-content">
     <header class="app-header">
       <div class="page-title">{{ pageTitle }}</div>
-      <!-- <div class="user-info" *ngIf="auth.userName()">
+
+      <div class="user-info" *ngIf="auth.userName()" (click)="goToProfile()" style="cursor: pointer;">
         <img src="https://www.gravatar.com/avatar/?d=mp" alt="User Photo" class="user-pic" />
         <div class="user-details">
           <div class="user-name">{{ auth.userName() }}</div>
           <div class="user-email">{{ auth.userEmail() }}</div>
         </div>
-      </div> -->
-      <div class="user-info" *ngIf="auth.userName()" (click)="goToProfile()" style="cursor: pointer;">
-  <img src="https://www.gravatar.com/avatar/?d=mp" alt="User Photo" class="user-pic" />
-  <div class="user-details">
-    <div class="user-name">{{ auth.userName() }}</div>
-    <div class="user-email">{{ auth.userEmail() }}</div>
-  </div>
-</div>
+      </div>
     </header>
 
     <div class="inner-content">

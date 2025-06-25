@@ -22,7 +22,7 @@ export class EditincomeComponent implements OnInit {
     private route: ActivatedRoute,
     private incomeService: IncomeService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.incomeId = Number(this.route.snapshot.paramMap.get('id'));

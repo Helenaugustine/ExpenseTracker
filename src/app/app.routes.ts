@@ -13,7 +13,6 @@ import { AddexpenseComponent } from './components/addexpense/addexpense.componen
 import { AddIncomeComponent } from './components/addincome/addincome.component';
 import { AddsavingsComponent } from './components/addsavings/addsavings.component';
 import { AddcategoryComponent } from './common/addcategory/addcategory.component';
-import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { AdminheaderComponent } from './adminside/adminheader/adminheader.component';
 import { ActiveusersComponent } from './adminside/activeusers/activeusers.component';
 import { DeletedusersComponent } from './adminside/deletedusers/deletedusers.component';
@@ -40,8 +39,8 @@ export const routes: Routes = [
       { path: 'expense', component: ExpenseComponent, data: { title: 'Expense' } },
       { path: 'savings', component: SavingsComponent, data: { title: 'Savings' } },
       { path: 'category', component: CategoryComponent, data: { title: 'Category' } },
-      // { path: 'analytics', component: AnalyticsComponent, data: { title: 'Analytics' } },
-        {path: 'analytics', component:AnalyticsComponent , data: { title: 'Analytics' }}
+     
+       
       
     ]
   },

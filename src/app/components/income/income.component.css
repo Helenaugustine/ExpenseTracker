@@ -24,6 +24,7 @@ h2 {
   cursor: pointer;
   font: 16px 'Poppins', sans-serif;
 }
+
 .add-btn:hover {
   background: linear-gradient(135deg, #1c2670, #3e68e0);
   transform: translateY(-2px);

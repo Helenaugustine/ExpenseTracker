@@ -20,6 +20,7 @@ export class LayoutComponent {
     public router: Router,
     private route: ActivatedRoute
   ) {
+    this.auth.loadUser();
     // update page title from child route data
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
@@ -35,28 +36,10 @@ export class LayoutComponent {
     this.auth.clearUser();
     this.router.navigate(['/login']);
   }
+
+  goToProfile() {
+    this.router.navigate(['/profile']);
+  }
+
  
-goToProfile() {
-  this.router.navigate(['/profile']);
-}
-
-// logout() {
-//   this.auth.logout().subscribe({
-//     next: (res) => {
-//       alert(res.message || 'Logged out successfully!');
-//       localStorage.clear(); // clear tokens or user data
-//       this.router.navigate(['/login']); // or your login route
-//   //     const message = (res as any).message;
-//   // alert(message || 'Logged out successfully!');
-//   // localStorage.clear();
-//   // this.router.navigate(['/login']);
-//     },
-
-//     error: (err) => {
-//       console.error('Logout failed:', err);
-//       alert('Something went wrong while logging out.');
-//     }
-//   });
-// }
-
 }

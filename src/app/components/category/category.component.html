@@ -1,26 +1,19 @@
-
 <div class="income-page">
   <div class="income-header">
     <h2>Category Details</h2>
-    <button class="add-btn" (click)="goToAddCategory()">+  Add Category</button>
-    
+    <button class="add-btn" (click)="goToAddCategory()">+ Add Category</button>
+
   </div>
 
   <div class="filters">
 
-   
-<div class="search-container">
-  <i class="fas fa-search search-icon"></i>
-  <input
-   [(ngModel)]="searchText"
-  (input)="filterCategories()"
-    placeholder="Search..."
-    class="search-input"
-    name="text"
-    type="text"
-  />
-</div>
-    
+
+    <div class="search-container">
+      <i class="fas fa-search search-icon"></i>
+      <input [(ngModel)]="searchText" (input)="filterCategories()" placeholder="Search..." class="search-input"
+        name="text" type="text" />
+    </div>
+
   </div>
 
   <table class="income-table">
@@ -34,22 +27,20 @@
     </thead>
     <tbody>
       <tr *ngFor="let cat of filteredCategory">
-  <td>{{ cat.id }}</td>
-   <td>{{ cat.name }}</td>
-    <td>{{ cat.type }}</td>
-  
-  
-        
+        <td>{{ cat.id }}</td>
+        <td>{{ cat.name }}</td>
+        <td>{{ cat.type }}</td>
+
+
+
         <td>
-       
-          <button class="delete-btn" (click)="deletecategory(cat.id)"><i class="fas fa-trash-alt" ></i></button>
+
+          <button class="delete-btn" (click)="deletecategory(cat.id)"><i class="fas fa-trash-alt"></i></button>
         </td>
       </tr>
       <!-- Repeat rows as needed -->
     </tbody>
   </table>
- 
+
 
 </div>
-
-

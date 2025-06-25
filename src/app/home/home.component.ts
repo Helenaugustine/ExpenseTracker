@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private savingsService: SavingsService,
     private expenseService: ExpenseService,
     private incomeService: IncomeService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const year = new Date().getFullYear();
@@ -85,20 +85,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.chartInstances.forEach(chart => chart.destroy());
     this.chartInstances = [];
 
-    // const colors = [
-    //   '#DC143C', '#32CD32', '#9B30FF', '#FFD700',
-    //   '#20C997', '#FF1493', '#FF6F00', '#FF4E50'
-    // ];
+    
     const colors = [
-  '#FF1744', // Fluorescent crimson
-  '#00FF00', // Neon green
-  '#C300FF', // Electric purple
-  '#FFFF00', // Bright yellow
-  '#00FFCC', // Aqua neon
-  '#FF69B4', // Hot pink
-  '#FF9100', // Vibrant orange
-  '#FF3D00'  // Fluorescent red-orange
-];
+      '#FF1744', // Fluorescent crimson
+      '#00FF00', // Neon green
+      '#C300FF', // Electric purple
+      '#FFFF00', // Bright yellow
+      '#00FFCC', // Aqua neon
+      '#FF69B4', // Hot pink
+      '#FF9100', // Vibrant orange
+      '#FF3D00'  // Fluorescent red-orange
+    ];
 
     const groupDataFrom = (data: any[], field: string) => {
       const map = new Map<string, number>();

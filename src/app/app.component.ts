@@ -22,7 +22,7 @@ import { LayoutComponent } from './layout/layout.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true, 
+  standalone: true,
   imports: [
     RouterOutlet,
     SignupComponent,
@@ -44,10 +44,10 @@ import { LayoutComponent } from './layout/layout.component';
     FormsModule,
     CommonModule,
     LayoutComponent
- 
+
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'] 
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'expensetracker';

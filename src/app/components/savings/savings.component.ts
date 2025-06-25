@@ -6,88 +6,99 @@ import { SavingsService } from '../../services/savings.service';
 
 @Component({
   selector: 'app-savings',
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './savings.component.html',
   styleUrl: './savings.component.css'
 })
 export class SavingsComponent {
   searchText: string = '';
   savings: any[] = [];
-   filteredSavings: any[] = [];   // Filtered list for display
+  filteredSavings: any[] = [];   // Filtered list for display
   selectedMonth: number | null = null;
-selectedYear: number | null = null;
+  selectedYear: number | null = null;
 
-  constructor(private SavingsService: SavingsService,private router: Router) {}
-  
-    // ngOnInit() {
-    //   this.SavingsService.getSavings().subscribe(data => {
-    //     this.savings = data;
-    //     console.log(data)
-    //   });
-    // }
+  constructor(private SavingsService: SavingsService, private router: Router) { }
+
  
 
-ngOnInit() {
-  this.SavingsService.getSavings().subscribe(data => {
-    this.savings = data;
-    this.filteredSavings = data;
-    this.SavingsService.cachedSavings = data;
-    
-  });
-}
+  ngOnInit() {
+    this.SavingsService.getSavings().subscribe(data => {
+      this.savings = data;
+      this.filteredSavings = data;
+      this.SavingsService.cachedSavings = data;
 
-filterSavings() {
-  const text = this.searchText.trim().toLowerCase();
-  this.filteredSavings = !text
-    ? this.savings
-    : this.savings.filter(s =>
+    });
+  }
+
+  filterSavings() {
+    const text = this.searchText.trim().toLowerCase();
+    this.filteredSavings = !text
+      ? this.savings
+      : this.savings.filter(s =>
         s.platform.toLowerCase().startsWith(text)
       );
-}
-    goToAddSavings() {
-      this.router.navigate(['/addsavings']);
-    }
-  
-    deletesavings(savingsId: number) {
-      console.log('Deleting savings with ID:', savingsId);
-    if (confirm('Are you sure you want to delete this saving?')) {
-      this.SavingsService.deletesavings(savingsId).subscribe({
-        next: () => {
-          alert('Savings deleted successfully!');
-          this.savings = this.savings.filter(i => i.id !== savingsId); // update UI
-        },
-        error: err => {
-          console.error('Error deleting savings:', err);
-          alert('Failed to delete savings.');
-        }
-  
-      });
-    }
+  }
+  goToAddSavings() {
+    this.router.navigate(['/addsavings']);
   }
 
+  // deletesavings(savingsId: number) {
+  //   console.log('Deleting savings with ID:', savingsId);
+  //   if (confirm('Are you sure you want to delete this saving?')) {
+  //     this.SavingsService.deletesavings(savingsId).subscribe({
+  //       next: () => {
+  //         alert('Savings deleted successfully!');
+  //         this.savings = this.savings.filter(i => i.id !== savingsId); // update UI
+  //       },
+  //       error: err => {
+  //         console.error('Error deleting savings:', err);
+  //         alert('Failed to delete savings.');
+  //       }
 
-filterSavingsByMonth() {
-  const month = Number(this.selectedMonth);
-  const year = Number(this.selectedYear);
+  //     });
+  //   }
+  // }
+  deletesavings(savingsId: number) {
+  console.log('Deleting savings with ID:', savingsId);
+  if (confirm('Are you sure you want to delete this saving?')) {
+    this.SavingsService.deletesavings(savingsId).subscribe({
+      next: () => {
+        alert('Savings deleted successfully!');
+        this.savings = this.savings.filter(i => i.id !== savingsId);
+        this.filteredSavings = this.filteredSavings.filter(i => i.id !== savingsId);
+      },
+      error: err => {
+        console.error('Error deleting savings:', err);
+        alert('Failed to delete savings.');
+      }
+    });
+  }
+}
 
-  if (!month && !year) {
-    this.filteredSavings = this.savings;
-    return;
+
+
+  filterSavingsByMonth() {
+    const month = Number(this.selectedMonth);
+    const year = Number(this.selectedYear);
+
+    if (!month && !year) {
+      this.filteredSavings = this.savings;
+      return;
+    }
+
+    this.filteredSavings = this.savings.filter(s => {
+      const date = new Date(s.createdAt);
+      const matchesMonth = !month || (date.getMonth() + 1) === month;
+      const matchesYear = !year || date.getFullYear() === year;
+
+      console.log(`Saving: ${s.platform} | Date: ${date} | Month match: ${matchesMonth} | Year match: ${matchesYear}`);
+      return matchesMonth && matchesYear;
+    });
+
+    console.log('Filtered result:', this.filteredSavings);
   }
 
-  this.filteredSavings = this.savings.filter(s => {
-    const date = new Date(s.createdAt);
-    const matchesMonth = !month || (date.getMonth() + 1) === month;
-    const matchesYear = !year || date.getFullYear() === year;
-
-    console.log(`Saving: ${s.platform} | Date: ${date} | Month match: ${matchesMonth} | Year match: ${matchesYear}`);
-    return matchesMonth && matchesYear;
-  });
-
-  console.log('Filtered result:', this.filteredSavings);
-}
-
-goToEditSavings(id: number) {
-  this.router.navigate(['/edit-savings', id]);
-}
+  goToEditSavings(id: number) {
+    this.router.navigate(['/edit-savings', id]);
+  }
 }

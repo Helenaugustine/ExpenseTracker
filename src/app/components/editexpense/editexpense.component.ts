@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-editexpense',
- standalone: true,
+  standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './editexpense.component.html',
   styleUrl: './editexpense.component.css'
@@ -21,7 +21,7 @@ export class EditexpenseComponent implements OnInit {
     private route: ActivatedRoute,
     private expenseService: ExpenseService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.expenseId = Number(this.route.snapshot.paramMap.get('id'));
@@ -54,4 +54,3 @@ export class EditexpenseComponent implements OnInit {
   }
 }
 
- 

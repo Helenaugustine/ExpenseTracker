@@ -1,78 +1,5 @@
-/* body {
-  margin: 0;
-  padding: 60px 40px 40px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f3f4f6;
-  display: flex;
-  justify-content: center;
-}
-
-.card-container {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.card {
-  width: 280px;
-  height: 160px;
-  border-radius: 20px;
-  color: white;
-  padding: 24px;
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.card h4 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.card p {
-  font-size: 32px;
-  margin-top: 20px;
-  font-weight: bold;
-}
-
-.expense {
-  background-color: #f44336;
-}
-
-.savings {
-  background-color: #4caf50;
-}
-
-.income {
-  background-color: #2196f3;
-}
-
-.balance {
-  background-color: #ff9800;
-}
-
-
-.charts {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-  margin-top: 2rem;
-}
-
-canvas {
-  max-width: 320px;
-  max-height: 320px;
-}
-canvas {
-  display: block;
-  background: #fff;
-  border: 1px solid #ccc;
-} */
- html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -83,7 +10,7 @@ body {
   padding: 60px 40px 40px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #bacdf4;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -109,9 +36,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background: linear-gradient(135deg, #1e2a78, #4f74ff); /* default */
+  background: linear-gradient(135deg, #1e2a78, #4f74ff);
+  /* default */
   transition: transform 0.3s ease;
 }
+
 .card:hover {
   transform: translateY(-6px);
 }
@@ -132,38 +61,31 @@ body {
 .expense {
   background: linear-gradient(135deg, #0f3460, #4895ef);
 }
+
 .savings {
   background: linear-gradient(135deg, #0f3460, #3a86ff);
 }
+
 .income {
   background: linear-gradient(135deg, #1e2a78, #4895ef);
 }
+
 .balance {
-  
+
   background: linear-gradient(135deg, #1e2a78, #3a86ff);
 }
- /* .expense {
-  background: linear-gradient(135deg, #2a2f91, #4a3aff);
-}
-.savings {
-  background: linear-gradient(135deg, #274060, #61a5ff);
-}
-.income {
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-}
-.balance {
-  background: linear-gradient(135deg, #41295a, #2f0743);
-} */
+
 
 
 /* Charts Layout */
 .charts {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* force 2 columns */
+  grid-template-columns: repeat(2, 1fr);
+  /* force 2 columns */
   gap: 30px;
   width: 100%;
-   row-gap: 40px; 
-   column-gap: 170px;
+  row-gap: 40px;
+  column-gap: 170px;
   max-width: 1000px;
   padding: 0 20px;
   margin-left: 150px;
@@ -182,8 +104,10 @@ body {
   text-align: center;
   transition: box-shadow 0.3s ease;
   width: 100%;
-max-width: 800px; /* ⬆️ Wider */
-  min-height: 260px;  /* ⬇️ Shorter */
+  max-width: 800px;
+ 
+  min-height: 260px;
+  
 }
 
 .chart-box:hover {

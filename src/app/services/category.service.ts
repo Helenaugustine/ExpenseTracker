@@ -7,17 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class CategoryService {
 
- private apiUrl = `https://localhost:7258/api/Category`; // Update as needed
+  private apiUrl = `https://localhost:7258/api/Category`; 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getcategory(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl, { withCredentials:true });
+    return this.http.get<any[]>(this.apiUrl, { withCredentials: true });
   }
 
-  deletecategory(categoryId : number) {
-  return this.http.delete(`https://localhost:7258/api/Category/user/category/${categoryId }`, {
-    withCredentials: true
-  });
-}
+  deletecategory(categoryId: number) {
+    return this.http.delete(`https://localhost:7258/api/Category/user/category/${categoryId}`, {
+      withCredentials: true
+    });
+  }
 }

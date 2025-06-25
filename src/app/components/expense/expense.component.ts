@@ -47,22 +47,39 @@ filterExpenses() {
 }
  
 
-  deleteExpense(expenseId: number) {
-    console.log('Deleting expense with ID:', expenseId);
+//   deleteExpense(expenseId: number) {
+//     console.log('Deleting expense with ID:', expenseId);
+//   if (confirm('Are you sure you want to delete this expense?')) {
+//     this.ExpenseService.deleteExpense(expenseId).subscribe({
+//       next: () => {
+//         alert('expense deleted successfully!');
+//         this.expenses = this.expenses.filter(i => i.id !== expenseId); // update UI
+//       },
+//       error: err => {
+//         console.error('Error deleting expense:', err);
+//         alert('Failed to delete expense.');
+//       }
+
+//     });
+//   }
+// }
+deleteExpense(expenseId: number) {
+  console.log('Deleting expense with ID:', expenseId);
   if (confirm('Are you sure you want to delete this expense?')) {
     this.ExpenseService.deleteExpense(expenseId).subscribe({
       next: () => {
-        alert('expense deleted successfully!');
-        this.expenses = this.expenses.filter(i => i.id !== expenseId); // update UI
+        alert('Expense deleted successfully!');
+        this.expenses = this.expenses.filter(i => i.id !== expenseId);
+        this.filteredExpenses = this.filteredExpenses.filter(i => i.id !== expenseId); 
       },
       error: err => {
         console.error('Error deleting expense:', err);
         alert('Failed to delete expense.');
       }
-
     });
   }
 }
+
 
 filterExpenseByMonth() {
   const month = Number(this.selectedMonth);

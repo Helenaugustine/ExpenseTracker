@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-edituser',
- standalone: true,
+  standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './edituser.component.html',
   styleUrl: './edituser.component.css'
@@ -21,7 +21,7 @@ export class EdituserComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.userId = Number(this.route.snapshot.paramMap.get('id'));

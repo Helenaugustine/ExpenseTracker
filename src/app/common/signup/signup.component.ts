@@ -38,6 +38,7 @@ export class SignupComponent {
   // }
 
 signup() {
+  localStorage.clear();
   const { Name, Email, Password } = this.user;
 
   if (!Name.trim() || !Email.trim() || !Password.trim()) {
@@ -49,7 +50,7 @@ signup() {
     .subscribe({
       next: (res: any) => {
         alert(res.message || 'Account created successfully.');
-        this.router.navigate(['/income']);
+        this.router.navigate(['/login']);
       },
       error: (err: any) => {
         const errorMsg =

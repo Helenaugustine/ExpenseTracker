@@ -35,6 +35,12 @@ export class LayoutComponent {
   logout() {
     this.auth.clearUser();
     this.router.navigate(['/login']);
+    
+localStorage.removeItem('userToken');
+  localStorage.removeItem('userData');
+  this.router.navigate(['/login']);
+
+
   }
 
   goToProfile() {

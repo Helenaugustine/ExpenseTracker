@@ -18,27 +18,7 @@ export class AddcategoryComponent {
 
   constructor(private http: HttpClient , private router: Router) { }
 
-  // submitcate() {
-  //   const payload = {
-  //     Name: this.cate.Name,
-  //     type: this.cate.Type
 
-  //   };
-  //   console.log('Submitting category:', this.cate);
-
-  //   this.http.post(`https://localhost:7258/api/Category/AddCategory`, payload, {
-  //     withCredentials: true
-  //   }).subscribe({
-  //     next: () => {
-  //       alert('category added successfully!');
-  //       this.cate = { Name: '', Type: '' }; // reset form
-  //     },
-  //     error: (err) => {
-  //       console.error('Error adding category:', err);
-  //       alert('Failed to add category.');
-  //     }
-  //   });
-  // }
   submitcate() {
   const { Name, Type } = this.cate;
 

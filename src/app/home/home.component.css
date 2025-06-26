@@ -59,20 +59,27 @@ body {
 
 /* Individual Card Gradient Themes */
 .expense {
-  background: linear-gradient(135deg, #0f3460, #4895ef);
+  /* background: linear-gradient(135deg, #0f3460, #4895ef); */
+  background: #e92d52;
+  box-shadow: 0 8px 20px #94253b;
 }
 
 .savings {
-  background: linear-gradient(135deg, #0f3460, #3a86ff);
+  /* background: linear-gradient(135deg, #0f3460, #3a86ff); */
+  background: rgb(27, 164, 27);
+  box-shadow: 0 8px 20px rgb(85, 246, 85);
 }
 
 .income {
-  background: linear-gradient(135deg, #1e2a78, #4895ef);
+  /* background: linear-gradient(135deg, #1e2a78, #4895ef); */
+  background: rgb(139, 26, 139);
+  box-shadow: 0 8px 20px rgb(242, 88, 242);
 }
 
 .balance {
 
   background: linear-gradient(135deg, #1e2a78, #3a86ff);
+  box-shadow: 0 8px 20px rgb(93, 93, 241);
 }
 
 

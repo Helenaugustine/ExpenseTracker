@@ -26,9 +26,12 @@ export class IncomeComponent implements OnInit {
 
   ngOnInit() {
     this.incomeService.getIncomes().subscribe(data => {
-      this.incomes = data;
-      this.filteredIncomes = data;
-      this.incomeService.cachedIncomes = data;
+      // this.incomes = data;
+      // this.filteredIncomes = data;
+      // this.incomeService.cachedIncomes = data;
+      this.incomes = data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    this.filteredIncomes = [...this.incomes];
+    this.incomeService.cachedIncomes = this.incomes;
     });
   }
 
@@ -47,22 +50,7 @@ export class IncomeComponent implements OnInit {
     this.router.navigate(['/addincome']);
   }
 
-  // deleteIncome(incomeId: number) {
-  //   console.log('Deleting income with ID:', incomeId);
-  //   if (confirm('Are you sure you want to delete this income?')) {
-  //     this.incomeService.deleteIncome(incomeId).subscribe({
-  //       next: () => {
-  //         alert('Income deleted successfully!');
-  //         this.incomes = this.incomes.filter(i => i.id !== incomeId); // update UI
-  //       },
-  //       error: err => {
-  //         console.error('Error deleting income:', err);
-  //         alert('Failed to delete income.');
-  //       }
 
-  //     });
-  //   }
-  // }
   deleteIncome(incomeId: number) {
   console.log('Deleting income with ID:', incomeId);
   if (confirm('Are you sure you want to delete this income?')) {

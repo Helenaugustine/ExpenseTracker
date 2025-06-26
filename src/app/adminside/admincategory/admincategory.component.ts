@@ -27,7 +27,7 @@ export class AdmincategoryComponent implements OnInit {
     });
   }
   goToAddCategory() {
-    this.router.navigate(['/addcate']);
+    this.router.navigate(['/adminaddcat']);
   }
 
   deletecategory(categoryId: number) {

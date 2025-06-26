@@ -12,7 +12,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { AddexpenseComponent } from './components/addexpense/addexpense.component';
 import { AddIncomeComponent } from './components/addincome/addincome.component';
 import { AddsavingsComponent } from './components/addsavings/addsavings.component';
-import { AddcategoryComponent } from './common/addcategory/addcategory.component';
+import { AddcategoryComponent } from './components/addcategory/addcategory.component';
 import { AdminheaderComponent } from './adminside/adminheader/adminheader.component';
 import { ActiveusersComponent } from './adminside/activeusers/activeusers.component';
 import { DeletedusersComponent } from './adminside/deletedusers/deletedusers.component';
@@ -22,12 +22,13 @@ import { EditincomeComponent } from './components/editincome/editincome.componen
 import { EditsavingsComponent } from './components/editsavings/editsavings.component';
 import { EditexpenseComponent } from './components/editexpense/editexpense.component';
 import { ProfileComponent } from './common/profile/profile.component';
+import { AdminaddcatComponent } from './adminside/adminaddcat/adminaddcat.component';
 // ... import other components
 
 export const routes: Routes = [
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  
+
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   {
@@ -39,30 +40,39 @@ export const routes: Routes = [
       { path: 'expense', component: ExpenseComponent, data: { title: 'Expense' } },
       { path: 'savings', component: SavingsComponent, data: { title: 'Savings' } },
       { path: 'category', component: CategoryComponent, data: { title: 'Category' } },
-     
-       
-      
+      { path: 'addexpense', component: AddexpenseComponent },
+      { path: 'addincome', component: AddIncomeComponent },
+      { path: 'addsavings', component: AddsavingsComponent },
+      { path: 'addcate', component: AddcategoryComponent },
+      { path: 'edit-savings/:id', component: EditsavingsComponent },
+      { path: 'edit-expense/:id', component: EditexpenseComponent },
+      { path: 'edit-income/:id', component: EditincomeComponent }
+
+
+
     ]
   },
   {
-    path: '',component: AdminheaderComponent,
+    path: '', component: AdminheaderComponent,
     children: [
-      {path: 'activeusers', component:ActiveusersComponent,data : {title: 'ActiveUsers'}},
-      {path: 'deletedusers', component:DeletedusersComponent,data : {title: 'DeletedUsers'}},
-      {path: 'admincategory' , component:AdmincategoryComponent , data : {title: 'Category'}}
+      { path: 'activeusers', component: ActiveusersComponent, data: { title: 'ActiveUsers' } },
+      { path: 'deletedusers', component: DeletedusersComponent, data: { title: 'DeletedUsers' } },
+      { path: 'admincategory', component: AdmincategoryComponent, data: { title: 'Category' } },
+      { path: 'adminaddcat', component: AdminaddcatComponent }
     ]
   },
-  {path: 'addexpense', component:AddexpenseComponent},
-  {path: 'addincome', component:AddIncomeComponent},
-  {path: 'addsavings', component:AddsavingsComponent},
-  {path: 'addcate' , component:AddcategoryComponent},
-{ path: 'edit-user/:id', component: EdituserComponent },
-{path: 'edit-savings/:id', component:EditsavingsComponent},
-{path:'edit-expense/:id', component:EditexpenseComponent},
-{ path: 'edit-income/:id', component: EditincomeComponent },
-{path:'profile' , component:ProfileComponent},
+  // {path: 'addexpense', component:AddexpenseComponent},
+  // {path: 'addincome', component:AddIncomeComponent},
+  // {path: 'addsavings', component:AddsavingsComponent},
+  // {path: 'addcate' , component:AddcategoryComponent},
+  { path: 'edit-user/:id', component: EdituserComponent },
+  // { path: 'edit-savings/:id', component: EditsavingsComponent },
+  // { path: 'edit-expense/:id', component: EditexpenseComponent },
+  // { path: 'edit-income/:id', component: EditincomeComponent },
+  // { path: 'adminaddcat', component: AdminaddcatComponent },
+  { path: 'profile', component: ProfileComponent },
 
   { path: '**', redirectTo: 'login' },
-  
+
 
 ];

@@ -96,7 +96,7 @@ export class AddexpenseComponent implements OnInit {
     next: () => {
       alert('Expense added successfully!');
       this.expense = { categoryId: null, Amount: '', Note: '' };
-       this.router.navigate(['/expense']);
+      this.router.navigate(['/expense']);
     },
     error: (err) => {
       console.error('Error adding expense:', err);

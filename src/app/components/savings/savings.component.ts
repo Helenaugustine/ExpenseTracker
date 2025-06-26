@@ -23,9 +23,9 @@ export class SavingsComponent {
 
   ngOnInit() {
     this.SavingsService.getSavings().subscribe(data => {
-      this.savings = data;
-      this.filteredSavings = data;
-      this.SavingsService.cachedSavings = data;
+       this.savings = data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    this.filteredSavings = [...this.savings];
+    this.SavingsService.cachedSavings = this.savings;
 
     });
   }
@@ -42,22 +42,7 @@ export class SavingsComponent {
     this.router.navigate(['/addsavings']);
   }
 
-  // deletesavings(savingsId: number) {
-  //   console.log('Deleting savings with ID:', savingsId);
-  //   if (confirm('Are you sure you want to delete this saving?')) {
-  //     this.SavingsService.deletesavings(savingsId).subscribe({
-  //       next: () => {
-  //         alert('Savings deleted successfully!');
-  //         this.savings = this.savings.filter(i => i.id !== savingsId); // update UI
-  //       },
-  //       error: err => {
-  //         console.error('Error deleting savings:', err);
-  //         alert('Failed to delete savings.');
-  //       }
 
-  //     });
-  //   }
-  // }
   deletesavings(savingsId: number) {
   console.log('Deleting savings with ID:', savingsId);
   if (confirm('Are you sure you want to delete this saving?')) {

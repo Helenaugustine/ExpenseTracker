@@ -33,7 +33,7 @@ export class AddIncomeComponent {
         alert('Income added successfully!');
         this.income = { Source: '', Amount: '' }; 
          // reset form
-    this.router.navigate(['/income']); //// reset form
+    this.router.navigate(['/income']); 
       },
       error: (err) => {
         console.error('Error adding income:', err);

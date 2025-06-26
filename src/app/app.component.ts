@@ -11,7 +11,7 @@ import { AdminheaderComponent } from './adminside/adminheader/adminheader.compon
 import { ActiveusersComponent } from './adminside/activeusers/activeusers.component';
 import { DeletedusersComponent } from './adminside/deletedusers/deletedusers.component';
 import { AddexpenseComponent } from './components/addexpense/addexpense.component';
-import { AddcategoryComponent } from './common/addcategory/addcategory.component';
+import { AddcategoryComponent } from './components/addcategory/addcategory.component';
 import { AddIncomeComponent } from './components/addincome/addincome.component';
 import { AddsavingsComponent } from './components/addsavings/addsavings.component';
 import { ProfileComponent } from './common/profile/profile.component';

@@ -31,9 +31,12 @@ filteredExpenses: any[] = [];
   // }
 ngOnInit() {
   this.ExpenseService.getExpense().subscribe(data => {
-    this.expenses = data;
-    this.filteredExpenses = data;
-    this.ExpenseService.cachedExpenses = data; 
+    // this.expenses = data;
+    // this.filteredExpenses = data;
+    // this.ExpenseService.cachedExpenses = data; 
+    this.expenses = data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    this.filteredExpenses = [...this.expenses];
+    this.ExpenseService.cachedExpenses = this.expenses; 
   });
 }
 
@@ -45,24 +48,7 @@ filterExpenses() {
         e.categoryName.toLowerCase().startsWith(text)
       );
 }
- 
 
-//   deleteExpense(expenseId: number) {
-//     console.log('Deleting expense with ID:', expenseId);
-//   if (confirm('Are you sure you want to delete this expense?')) {
-//     this.ExpenseService.deleteExpense(expenseId).subscribe({
-//       next: () => {
-//         alert('expense deleted successfully!');
-//         this.expenses = this.expenses.filter(i => i.id !== expenseId); // update UI
-//       },
-//       error: err => {
-//         console.error('Error deleting expense:', err);
-//         alert('Failed to delete expense.');
-//       }
-
-//     });
-//   }
-// }
 deleteExpense(expenseId: number) {
   console.log('Deleting expense with ID:', expenseId);
   if (confirm('Are you sure you want to delete this expense?')) {

@@ -15,10 +15,10 @@ import { AddcategoryComponent } from './components/addcategory/addcategory.compo
 import { AddIncomeComponent } from './components/addincome/addincome.component';
 import { AddsavingsComponent } from './components/addsavings/addsavings.component';
 import { ProfileComponent } from './common/profile/profile.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent } from './components/layout/layout.component';
 
 @Component({
   selector: 'app-root',

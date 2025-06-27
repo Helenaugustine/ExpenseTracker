@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { filter, map } from 'rxjs';
 
 @Component({
@@ -21,7 +21,7 @@ export class LayoutComponent {
     private route: ActivatedRoute
   ) {
     this.auth.loadUser();
-    // update page title from child route data
+    
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map(() => {
@@ -34,14 +34,28 @@ export class LayoutComponent {
 
   logout() {
     this.auth.clearUser();
-    this.router.navigate(['/login']);
+    
+    this.router.navigate(['/login'], { replaceUrl: true });
+
     
 localStorage.removeItem('userToken');
-  localStorage.removeItem('userData');
-  this.router.navigate(['/login']);
+ localStorage.removeItem('userData');
+ this.router.navigate(['/login']);
 
 
   }
+// logout() {
+//     this.auth.clearUser().subscribe({
+//       next: () => {
+//         localStorage.clear();
+//         this.router.navigate(['/login']);
+//          this.auth.clearUser();
+//       },
+//       error: () => {
+//         alert("Logout failed. Please try again.");
+//       }
+//     });
+//   }
 
   goToProfile() {
     this.router.navigate(['/profile']);

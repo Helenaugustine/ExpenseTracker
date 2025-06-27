@@ -1,9 +1,9 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { YearlycardsService, YearlySnapshotDto } from '../services/yearlycards.service';
-import { SavingsService, ShowSavings } from '../services/savings.service';
-import { ExpenseService } from '../services/expense.service';
-import { IncomeService } from '../services/income.service';
+import { YearlycardsService, YearlySnapshotDto } from '../../services/yearlycards.service';
+import { SavingsService, ShowSavings } from '../../services/savings.service';
+import { ExpenseService } from '../../services/expense.service';
+import { IncomeService } from '../../services/income.service';
 import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);

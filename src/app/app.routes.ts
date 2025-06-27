@@ -1,12 +1,12 @@
 
 import { Routes } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent } from './components/layout/layout.component';
 import { LoginComponent } from './common/login/login.component';
 import { SignupComponent } from './common/signup/signup.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { IncomeComponent } from './components/income/income.component';
 import { ExpenseComponent } from './components/expense/expense.component';
-
+import { authGuard } from './Guard/auth.guard';
 import { SavingsComponent } from './components/savings/savings.component';
 import { CategoryComponent } from './components/category/category.component';
 import { AddexpenseComponent } from './components/addexpense/addexpense.component';
@@ -25,6 +25,7 @@ import { ProfileComponent } from './common/profile/profile.component';
 import { AdminaddcatComponent } from './adminside/adminaddcat/adminaddcat.component';
 
 
+
 export const routes: Routes = [
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -35,18 +36,18 @@ export const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: 'home', component: HomeComponent, data: { title: 'Home' } },
-      { path: 'income', component: IncomeComponent, data: { title: 'Income' } },
-      { path: 'expense', component: ExpenseComponent, data: { title: 'Expense' } },
-      { path: 'savings', component: SavingsComponent, data: { title: 'Savings' } },
-      { path: 'category', component: CategoryComponent, data: { title: 'Category' } },
-      { path: 'addexpense', component: AddexpenseComponent },
-      { path: 'addincome', component: AddIncomeComponent },
-      { path: 'addsavings', component: AddsavingsComponent },
-      { path: 'addcate', component: AddcategoryComponent },
-      { path: 'edit-savings/:id', component: EditsavingsComponent },
-      { path: 'edit-expense/:id', component: EditexpenseComponent },
-      { path: 'edit-income/:id', component: EditincomeComponent }
+      { path: 'home', component: HomeComponent, canActivate: [authGuard], data: { title: 'Home' } },
+      { path: 'income', component: IncomeComponent,canActivate: [authGuard], data: { title: 'Income' } },
+      { path: 'expense', component: ExpenseComponent,canActivate: [authGuard], data: { title: 'Expense' } },
+      { path: 'savings', component: SavingsComponent, canActivate: [authGuard], data: { title: 'Savings' } },
+      { path: 'category', component: CategoryComponent, canActivate: [authGuard], data: { title: 'Category' } },
+      { path: 'addexpense', component: AddexpenseComponent , canActivate: [authGuard] },
+      { path: 'addincome', component: AddIncomeComponent , canActivate: [authGuard] },
+      { path: 'addsavings', component: AddsavingsComponent , canActivate: [authGuard] },
+      { path: 'addcate', component: AddcategoryComponent , canActivate: [authGuard]},
+      { path: 'edit-savings/:id', component: EditsavingsComponent , canActivate: [authGuard] },
+      { path: 'edit-expense/:id', component: EditexpenseComponent , canActivate: [authGuard] },
+      { path: 'edit-income/:id', component: EditincomeComponent , canActivate: [authGuard] }
 
 
 
@@ -55,16 +56,16 @@ export const routes: Routes = [
   {
     path: '', component: AdminheaderComponent,
     children: [
-      { path: 'activeusers', component: ActiveusersComponent, data: { title: 'ActiveUsers' } },
-      { path: 'deletedusers', component: DeletedusersComponent, data: { title: 'DeletedUsers' } },
-      { path: 'admincategory', component: AdmincategoryComponent, data: { title: 'Category' } },
-      { path: 'adminaddcat', component: AdminaddcatComponent }
+      { path: 'activeusers', component: ActiveusersComponent , canActivate: [authGuard], data: { title: 'ActiveUsers' } },
+      { path: 'deletedusers', component: DeletedusersComponent, canActivate: [authGuard], data: { title: 'DeletedUsers' } },
+      { path: 'admincategory', component: AdmincategoryComponent , canActivate: [authGuard], data: { title: 'Category' } },
+      { path: 'adminaddcat', component: AdminaddcatComponent , canActivate: [authGuard] }
     ]
   },
   
   { path: 'edit-user/:id', component: EdituserComponent },
  
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent , canActivate: [authGuard]},
 
   { path: '**', redirectTo: 'login' },
 

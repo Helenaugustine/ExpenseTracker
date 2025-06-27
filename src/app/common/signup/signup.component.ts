@@ -21,21 +21,7 @@ export class SignupComponent {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  // signup() {
-  //   this.http.post<any>(`https://localhost:7258/api/User/RegisterUser`, this.user)
-  //     .subscribe({
-  //       next: (res: any) => {
-  //         alert(res.message || 'Account created successfully.');
-  //         // this.router.navigate(['/user-dashboard']);
-  //         this.router.navigate(['/home']);
-
-
-  //       },
-  //       error: (err: any) => {
-  //         alert(err.error || 'Something went wrong!');
-  //       }
-  //     });
-  // }
+ 
 
 signup() {
   localStorage.clear();

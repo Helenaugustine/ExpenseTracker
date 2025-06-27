@@ -17,12 +17,7 @@ export class DeletedusersComponent {
   searchText: string = '';
   constructor(private ActiveusersService: ActiveusersService, private router: Router) { }
 
-  // ngOnInit() {
-  //   this.ActiveusersService.getUser().subscribe(data => {
-  //     this.users = data;
-  //     console.log(data)
-  //   });
-  // }
+
   ngOnInit() {
     this.ActiveusersService.getUser().subscribe(data => {
       this.users = data;

@@ -13,7 +13,7 @@ import { SavingsService } from '../../services/savings.service';
 export class SavingsComponent {
   searchText: string = '';
   savings: any[] = [];
-  filteredSavings: any[] = [];   // Filtered list for display
+  filteredSavings: any[] = [];   
   selectedMonth: number | null = null;
   selectedYear: number | null = null;
 

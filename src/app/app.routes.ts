@@ -23,7 +23,7 @@ import { EditsavingsComponent } from './components/editsavings/editsavings.compo
 import { EditexpenseComponent } from './components/editexpense/editexpense.component';
 import { ProfileComponent } from './common/profile/profile.component';
 import { AdminaddcatComponent } from './adminside/adminaddcat/adminaddcat.component';
-// ... import other components
+
 
 export const routes: Routes = [
 
@@ -61,15 +61,9 @@ export const routes: Routes = [
       { path: 'adminaddcat', component: AdminaddcatComponent }
     ]
   },
-  // {path: 'addexpense', component:AddexpenseComponent},
-  // {path: 'addincome', component:AddIncomeComponent},
-  // {path: 'addsavings', component:AddsavingsComponent},
-  // {path: 'addcate' , component:AddcategoryComponent},
+  
   { path: 'edit-user/:id', component: EdituserComponent },
-  // { path: 'edit-savings/:id', component: EditsavingsComponent },
-  // { path: 'edit-expense/:id', component: EditexpenseComponent },
-  // { path: 'edit-income/:id', component: EditincomeComponent },
-  // { path: 'adminaddcat', component: AdminaddcatComponent },
+ 
   { path: 'profile', component: ProfileComponent },
 
   { path: '**', redirectTo: 'login' },

@@ -42,43 +42,5 @@ export class AddsavingsComponent {
     });
   }
 }
-//   submitSavings() {
-//   const { Platform, Type, Amount } = this.saving;
 
-//   if (!Platform.trim()) {
-//     alert('Please enter the savings platform.');
-//     return;
-//   }
-
-//   if (!Type.trim()) {
-//     alert('Please enter the type of savings.');
-//     return;
-//   }
-
-//   const parsedAmount = parseFloat(Amount);
-//   if (!Amount.trim() || isNaN(parsedAmount) || parsedAmount <= 0) {
-//     alert('Please enter a valid, positive amount.');
-//     return;
-//   }
-
-//   const payload = {
-//     platform: Platform.trim(),
-//     type: Type.trim(),
-//     amount: parsedAmount
-//   };
-
-//   this.http.post(`https://localhost:7258/api/Savings/AddSavings`, payload, {
-//     withCredentials: true
-//   }).subscribe({
-//     next: () => {
-//       alert('Saving added successfully!');
-//       this.saving = { Platform: '', Type: '', Amount: '' }; // Reset form
-//     },
-//     error: (err) => {
-//       console.error('Error adding saving:', err);
-//       alert('Failed to add saving.');
-//     }
-//   });
-// }
-// }
 

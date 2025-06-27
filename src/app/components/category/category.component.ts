@@ -14,8 +14,7 @@ export class CategoryComponent implements OnInit {
 
   searchText: string = '';
 
-  filteredCategory: any[] = []; // filtered list for display
-
+  filteredCategory: any[] = []; 
 
 
   constructor(private CategoryService: CategoryService, private router: Router) { }
@@ -40,22 +39,7 @@ export class CategoryComponent implements OnInit {
     this.router.navigate(['/addcate']);
   }
 
-  // deletecategory(categoryId: number) {
-  //   console.log('Deleting category with ID:', categoryId);
-  //   if (confirm('Are you sure you want to delete this category?')) {
-  //     this.CategoryService.deletecategory(categoryId).subscribe({
-  //       next: () => {
-  //         alert('category deleted successfully!');
-  //         this.category = this.category.filter(i => i.id !== categoryId); // update UI
-  //       },
-  //       error: err => {
-  //         console.error('Error deleting category:', err);
-  //         alert('Failed to delete category.');
-  //       }
-
-  //     });
-  //   }
-  // }
+ 
   deletecategory(categoryId: number) {
   console.log('Deleting category with ID:', categoryId);
   if (confirm('Are you sure you want to delete this category?')) {

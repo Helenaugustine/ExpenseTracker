@@ -21,14 +21,12 @@ export class IncomeComponent implements OnInit {
   constructor(private incomeService: IncomeService, private router: Router) { }
 
 
-  filteredIncomes: any[] = [];    // Result of filters
+  filteredIncomes: any[] = [];   
 
 
   ngOnInit() {
     this.incomeService.getIncomes().subscribe(data => {
-      // this.incomes = data;
-      // this.filteredIncomes = data;
-      // this.incomeService.cachedIncomes = data;
+ 
       this.incomes = data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     this.filteredIncomes = [...this.incomes];
     this.incomeService.cachedIncomes = this.incomes;

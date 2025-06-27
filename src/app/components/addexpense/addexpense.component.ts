@@ -24,7 +24,7 @@ export class AddexpenseComponent implements OnInit {
 
   };
 
-  constructor(private http: HttpClient ,  private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.loadCategories();
@@ -46,63 +46,42 @@ export class AddexpenseComponent implements OnInit {
 
 
 
-  // submitExpense() {
 
-  //   const payload = {
-  //     categoryId: this.expense.categoryId,
-  //     amount: Number(this.expense.Amount),
-  //     note: this.expense.Note
-  //   };
-  //   console.log('Submitting payload:', payload);
-  //   this.http.post(`https://localhost:7258/api/Expense/AddExpense`, payload, {
-  //     withCredentials: true
-  //   })
-  //     .subscribe({
-  //       next: () => {
-  //         alert('Expense added successfully!');
-  //         this.expense = { categoryId: null, Amount: '', Note: '' }; // Reset form
-  //       },
-  //       error: (err) => {
-  //         console.error('Error adding expense:', err);
-  //         alert('Failed to add expense.');
-  //       }
-  //     });
-  // }
   submitExpense() {
-  const { categoryId, Amount, Note } = this.expense;
+    const { categoryId, Amount, Note } = this.expense;
 
-  if (!categoryId) {
-    alert('Please select a category.');
-    return;
-  }
-
-  const parsedAmount = parseFloat(Amount);
-  if (!Amount.trim() || isNaN(parsedAmount) || parsedAmount <= 0) {
-    alert('Please enter a valid amount.');
-    return;
-  }
-
-  const payload = {
-    categoryId,
-    amount: parsedAmount,
-    note: Note?.trim() || ''
-  };
-
-  console.log('Submitting payload:', payload);
-
-  this.http.post(`https://localhost:7258/api/Expense/AddExpense`, payload, {
-    withCredentials: true
-  }).subscribe({
-    next: () => {
-      alert('Expense added successfully!');
-      this.expense = { categoryId: null, Amount: '', Note: '' };
-      this.router.navigate(['/expense']);
-    },
-    error: (err) => {
-      console.error('Error adding expense:', err);
-      alert('Failed to add expense.');
+    if (!categoryId) {
+      alert('Please select a category.');
+      return;
     }
-  });
-}
+
+    const parsedAmount = parseFloat(Amount);
+    if (!Amount.trim() || isNaN(parsedAmount) || parsedAmount <= 0) {
+      alert('Please enter a valid amount.');
+      return;
+    }
+
+    const payload = {
+      categoryId,
+      amount: parsedAmount,
+      note: Note?.trim() || ''
+    };
+
+    console.log('Submitting payload:', payload);
+
+    this.http.post(`https://localhost:7258/api/Expense/AddExpense`, payload, {
+      withCredentials: true
+    }).subscribe({
+      next: () => {
+        alert('Expense added successfully!');
+        this.expense = { categoryId: null, Amount: '', Note: '' };
+        this.router.navigate(['/expense']);
+      },
+      error: (err) => {
+        console.error('Error adding expense:', err);
+        alert('Failed to add expense.');
+      }
+    });
+  }
 
 }

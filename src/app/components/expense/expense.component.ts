@@ -23,17 +23,10 @@ filteredExpenses: any[] = [];
  goToAddExpense() {
     this.router.navigate(['/addexpense']);
   }
-  // ngOnInit() {
-  //   this.ExpenseService.getExpense().subscribe(data => {
-  //     this.expenses = data;
-  //     console.log(data)
-  //   });
-  // }
+ 
 ngOnInit() {
   this.ExpenseService.getExpense().subscribe(data => {
-    // this.expenses = data;
-    // this.filteredExpenses = data;
-    // this.ExpenseService.cachedExpenses = data; 
+     
     this.expenses = data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     this.filteredExpenses = [...this.expenses];
     this.ExpenseService.cachedExpenses = this.expenses; 

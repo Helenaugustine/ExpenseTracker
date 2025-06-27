@@ -19,7 +19,7 @@
   <table class="income-table">
     <thead>
       <tr>
-        <!-- <th>ID</th> -->
+        
         <th>NAME</th>
         <th>TYPE</th>
         <th>ACTIONS</th>
@@ -27,7 +27,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let cat of filteredCategory">
-        <!-- <td>{{ cat.id }}</td> -->
+       
         <td>{{ cat.name }}</td>
         <td>{{ cat.type }}</td>
 
@@ -38,7 +38,7 @@
           <button class="delete-btn" (click)="deletecategory(cat.id)"><i class="fas fa-trash-alt"></i></button>
         </td>
       </tr>
-      <!-- Repeat rows as needed -->
+    
     </tbody>
   </table>
 
